@@ -1,0 +1,28 @@
+nav {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  background: rgb(103, 85, 206);
+  position: fixed;
+  width: 100%;
+  height: 60px;
+}
+.navLinks {
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+.navLink {
+    color: white;
+    text-decoration: none;
+}
+.navLinkActive {
+    text-decoration: underline;
+}
+.navLink:hover {
+color: yellow;
+}

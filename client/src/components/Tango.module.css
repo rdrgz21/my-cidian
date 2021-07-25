@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    height: 125px;
+    width: 125px;
+    border: 10px solid turquoise;
+    margin: 10px;
+}
+
+input {
+    width: 90%;
+    text-align: center;
+    border: none;
+}

@@ -1,0 +1,8 @@
+.container {
+    text-align: center;
+    border: 2px solid fuchsia;
+}
+.charactersContainer {
+    display: flex;
+    justify-content: center;
+}
