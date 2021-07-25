@@ -1,0 +1,10 @@
+.editingBullet {
+    color: orange;
+}
+.bullet, .editingBullet {
+    font-size: 32px;
+    font-weight: 900;
+}
+.bullet {
+    color: darkgrey;
+}

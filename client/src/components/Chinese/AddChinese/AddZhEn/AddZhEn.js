@@ -33,17 +33,12 @@ export const AddZhEn = (props) => {
 
     return (
         <div className={AddZhEnCSS.container}>
-            <form onSubmit={handleSubmit}>
-               <label htmlFor='chinese'>Chinese</label>
-               <br />
-               <input onChange={handleChange} type='text' name='chinese' value={input.japanese} required />
-               <br />
-               <label htmlFor='meaning'>Meaning</label>
-               <br />
-               <input onChange={handleChange} type='text' name='meaning' value={input.reading} />
-               <br />
-               <button>Click me</button>
-               <br />
+            <form className={AddZhEnCSS.form} onSubmit={handleSubmit}>
+               <div className={AddZhEnCSS.inputContainer}>
+                    <input className={AddZhEnCSS.input} onChange={handleChange} type='text' name='chinese' placeholder='Chinese' value={input.japanese} required />
+                    <input className={AddZhEnCSS.input} onChange={handleChange} type='text' placeholder='English' name='meaning' value={input.reading} />
+               </div>
+               <button className={AddZhEnCSS.button}>Save</button>
            </form>
        </div>
     )

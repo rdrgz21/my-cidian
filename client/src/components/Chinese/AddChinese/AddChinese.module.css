@@ -2,7 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+.buttonContainer {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 .vocabContainer {
     padding: 20px;

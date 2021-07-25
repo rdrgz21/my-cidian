@@ -3,7 +3,7 @@ import AddSingleReadingCSS from "./AddSingleReading.module.css";
 
 export const AddSingleReading = props => {
 
-    const {savedCharacter, savedReadings, setReadings, nextCharacter, previousCharacter, nextStage, index} = props;
+    const {savedCharacter, savedReadings, setReadings, nextCharacter, previousCharacter, nextStage, editingCharacter, index} = props;
 
     const [input, setInput] = useState('');
 
@@ -31,10 +31,12 @@ export const AddSingleReading = props => {
 
     return (
         <div className={AddSingleReadingCSS.singleCharacterEdit}>
-            <button onClick={previousCharacter}>Back</button>
-            <input onChange={handleChange} type='text' placeholder={savedReadings[index]} value={input}/>
-            <button onClick={handleClick}>Next</button>
-            <p>{savedCharacter}</p>
+            <h1>{savedCharacter}</h1>
+            <input onChange={handleChange} type='text' placeholder={savedReadings[index] ? savedReadings[index] : 'Add reading'} value={input}/>
+            <div>
+                {editingCharacter > 0 && <button onClick={previousCharacter}>Back</button>}
+                <button onClick={handleClick}>Next</button>
+            </div>
         </div>
     )
 };

@@ -9,7 +9,7 @@ export const Review = props => {
     return (
         <div className={ReviewCSS.container}>
             <div className={ReviewCSS.charactersContainer}>
-                {savedCharacters.map((character, index) => (<IndivCharReview savedCharacter={character} savedPinyin={savedPinyin[index]} />))}
+                {savedCharacters.map((character, index) => (<IndivCharReview savedCharacter={character} savedPinyin={savedPinyin[index]} key={index} />))}
             </div>
             <h2>{savedMeaning}</h2>
        </div>

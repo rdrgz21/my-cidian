@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import AddSingleTone from '../AddSingleTone/AddSingleTone';
 import AddTonesCSS from "./AddTones.module.css";
+import StageBullets from '../StageBullets/StageBullets';
 
 export const AddTones = props => {
 
@@ -16,8 +17,8 @@ export const AddTones = props => {
 
     return (
         <div className={AddTonesCSS.container}>
-            {editingCharacter + 1}
-            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleTone savedCharacter={savedCharacters[index]} savedReadings={savedReadings} savedTones={savedTones} setTones={setTones} savedPinyin={savedPinyin} setPinyin={setPinyin} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} index={index} key={index} />))}
+            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleTone savedCharacter={savedCharacters[index]} savedReadings={savedReadings} savedTones={savedTones} setTones={setTones} savedPinyin={savedPinyin} setPinyin={setPinyin} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} editingCharacter={editingCharacter} index={index} key={index} />))}
+            <StageBullets savedCharacters={savedCharacters} editingCharacter={editingCharacter} />
        </div>
     )
 };

@@ -16,7 +16,6 @@ export const AddChinese = () => {
     const [stage, setStage] = useState(1);
 
     const nextStage = () => {
-        console.log('NEXT');
         setStage(stage + 1);
     };
     const previousStage = () => setStage(stage - 1);
@@ -48,14 +47,12 @@ export const AddChinese = () => {
 
     return (
         <div className={AddChineseCSS.container}>
-            Chinese: {chinese}<br />
-            Meaning: {meaning}<br />
-            Characters: {characters}<br />
-            Readings: {readings}<br />
-            Tones: {tones}<br />
-            Pinyin: {pinyin}<br />
-            <button onClick={nextStage}>Next</button>
-            <button onClick={previousStage}>Back</button>
+            {stage > 1 &&
+                (<div className={AddChineseCSS.buttonContainer}>
+                    <button onClick={previousStage}>Back</button>
+                    <button onClick={nextStage}>Next</button>
+                </div>)
+            }
             {generateComponentByStage(stage)}
        </div>
     )

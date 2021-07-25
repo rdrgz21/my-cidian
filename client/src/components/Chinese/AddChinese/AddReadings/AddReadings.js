@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import AddReadingsCSS from "./AddReadings.module.css";
 import AddSingleReading from '../AddSingleReading/AddSingleReading';
+import StageBullets from '../StageBullets/StageBullets';
 
 export const AddReadings = props => {
 
@@ -14,8 +15,8 @@ export const AddReadings = props => {
 
     return (
         <div className={AddReadingsCSS.container}>
-            {editingCharacter + 1}
-            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleReading savedCharacter={savedCharacters[index]} savedReadings={savedReadings} setReadings={setReadings} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} index={index} key={index} />))}
+            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleReading savedCharacter={savedCharacters[index]} savedReadings={savedReadings} setReadings={setReadings} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} editingCharacter={editingCharacter} index={index} key={index} />))}
+            <StageBullets savedCharacters={savedCharacters} editingCharacter={editingCharacter} />
        </div>
     )
 };

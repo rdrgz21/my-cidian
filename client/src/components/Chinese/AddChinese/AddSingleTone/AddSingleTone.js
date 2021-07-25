@@ -4,7 +4,7 @@ import AddSingleToneCSS from "./AddSingleTone.module.css";
 
 export const AddSingleTone = props => {
 
-    const {savedCharacter, savedReadings, savedTones, setTones, savedPinyin, setPinyin, nextCharacter, previousCharacter, nextStage, index} = props;
+    const {savedCharacter, savedReadings, savedTones, setTones, savedPinyin, setPinyin, nextCharacter, previousCharacter, nextStage, editingCharacter, index} = props;
 
     const constructTones = event => {
         const tone = event.target.value === savedTones[index] ? 0 : event.target.value;
@@ -15,7 +15,6 @@ export const AddSingleTone = props => {
     };
 
     const constructPinyin = () => {
-        console.log('Constructing pinyin');
         const firstSection = savedPinyin.slice(0, index);
         const secondSection = savedPinyin.slice(index + 1, savedPinyin.length);
         const newArray = firstSection.concat([applyTone(savedReadings[index], savedTones[index])], secondSection);
@@ -38,17 +37,16 @@ export const AddSingleTone = props => {
 
     return (
         <div className={AddSingleToneCSS.singleToneEdit}>
-            <button onClick={previousCharacter}>Back</button>
-            <hr />
-            <p>{savedPinyin[index]}</p>
-            <p>{savedCharacter}</p>
+            <h2>{savedPinyin[index]}</h2>
+            <h1>{savedCharacter}</h1>
             <button onClick={constructTones} value={1}>1</button>
             <button onClick={constructTones} value={2}>2</button>
             <button onClick={constructTones} value={3}>3</button>
             <button onClick={constructTones} value={4}>4</button>
-            <hr />
-            <button onClick={handleClickNext}>Next</button>
-            
+            <div>
+                {editingCharacter > 0 && <button onClick={previousCharacter}>Back</button>}
+                <button onClick={handleClickNext}>Next</button>
+            </div>
         </div>
     )
 };
