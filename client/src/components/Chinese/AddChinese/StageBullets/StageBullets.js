@@ -7,7 +7,7 @@ export const StageBullets = props => {
 
     return (
         <div className={StageBulletsCSS.container}>
-            {savedCharacters.map((character, index)=>(<span className={index === editingCharacter ? StageBulletsCSS.editingBullet : StageBulletsCSS.bullet}>・</span>))}
+            {savedCharacters.map((character, index)=>(<span className={index === editingCharacter ? StageBulletsCSS.editingBullet : StageBulletsCSS.bullet} key={index}>・</span>))}
        </div>
     )
 };

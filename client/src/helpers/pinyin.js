@@ -80,7 +80,6 @@ export const applyTone = (string, tone) => {
     const untonedVowel = getUntonedVowel(final);
     const tonedVowel = getTonedVowel(untonedVowel, tone);
     const tonedString = string.replace(untonedVowel, tonedVowel);
-    console.log(tonedString);
 
     return tonedString;
   };

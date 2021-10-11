@@ -39,7 +39,7 @@ export const AddChinese = () => {
             case 3:
                 return <AddTones savedCharacters={characters} savedReadings={readings} savedTones={tones} setTones={setTones} savedPinyin={pinyin} setPinyin={setPinyin} nextStage={nextStage} />
             case 4:
-                return <Review savedCharacters={characters} savedPinyin={pinyin} savedMeaning={meaning} />
+                return <Review savedCharacters={characters} savedPinyin={pinyin} savedMeaning={meaning} savedTones={tones} />
             default:
                 return null;
         }

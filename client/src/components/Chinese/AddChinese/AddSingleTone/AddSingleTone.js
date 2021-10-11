@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 import { applyTone } from '../../../../helpers/pinyin';
+import { TonePad } from '../TonePad/TonePad';
+import AnimatedPinyin from '../AnimatedPinyin/AnimatedPinyin';
 import AddSingleToneCSS from "./AddSingleTone.module.css";
 
 export const AddSingleTone = props => {
+
+    console.log('Hello from single tone');
 
     const {savedCharacter, savedReadings, savedTones, setTones, savedPinyin, setPinyin, nextCharacter, previousCharacter, nextStage, editingCharacter, index} = props;
 
@@ -21,7 +25,7 @@ export const AddSingleTone = props => {
         setPinyin(newArray);
     };
 
-    useEffect(()=>{
+    useEffect(() =>{
         constructPinyin();
     }, [savedTones[index]]);
 
@@ -33,17 +37,24 @@ export const AddSingleTone = props => {
         if (index === savedReadings.length-1) {
             nextStage();
         }
-    } 
+    };
+
+    const handleToneClick = event => {
+        constructTones(event);
+    }
 
     return (
         <div className={AddSingleToneCSS.singleToneEdit}>
-            <h2>{savedPinyin[index]}</h2>
-            <h1>{savedCharacter}</h1>
-            <button onClick={constructTones} value={1}>1</button>
-            <button onClick={constructTones} value={2}>2</button>
-            <button onClick={constructTones} value={3}>3</button>
-            <button onClick={constructTones} value={4}>4</button>
-            <div>
+            <AnimatedPinyin animationPlayed={false} pinyin={savedPinyin[index]} tone={parseInt(savedTones[index])} pinyinStyles={null} pinyinDelay={null} />
+            <div className={AddSingleToneCSS.container}>
+                <div className={AddSingleToneCSS.crossContainer}>
+                    <div className={AddSingleToneCSS.horizontalLine} />
+                    <div className={AddSingleToneCSS.verticalLine} />
+                </div>
+                <h1>{savedCharacter}</h1>
+                <TonePad handleToneClick={handleToneClick} savedTone={parseInt(savedTones[index])} />
+            </div>
+            <div className={AddSingleToneCSS.nextButtonContainer}>
                 {editingCharacter > 0 && <button onClick={previousCharacter}>Back</button>}
                 <button onClick={handleClickNext}>Next</button>
             </div>

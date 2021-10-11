@@ -4,18 +4,19 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
+    justify-content: center;
+    /* border: 2px solid lime; */
+    box-sizing: border-box;
 }
 .buttonContainer {
     height: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    /* border: 2px solid fuchsia; */
 }
 .vocabContainer {
     padding: 20px;
     height: 100px;
     text-align: center;
-}
-.singleCharacterEdit {
-    padding: 10px;
 }

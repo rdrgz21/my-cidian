@@ -1,0 +1,88 @@
+
+.container {
+    /* Need to make this whole thing work with variables so can be used in both Tone & Review stages */
+    /* Height should be 3x height of text, width?
+    /* height: 150px; */
+    /* width: 200px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 5rem;
+    height: 2em;
+}
+.container p {
+    color: black;
+    animation-duration: 0.7s;
+    animation-iteration-count: 1;
+}
+.tone1 {
+    animation-name: tone1;
+}
+@keyframes tone1 {
+    50% {
+        transform: translateY(-0.9em) perspective(100px) rotateX(-45deg) scale(0.5);
+        /* font-size: 17vw; */
+        /* font-size: 4em; */
+        color: crimson;
+    }
+}
+
+.tone2 {
+    animation-name: tone2;
+}
+@keyframes tone2 {
+    50% {
+        /* font-size: 13vw; */
+        /* font-size: 3em; */
+        /* transform: skew(-5deg, -20deg) translateY(-0.03em) translateX(1.5em) scale(0.5); */
+        transform: skew(-5deg, -20deg) translateY(-0.3em) translateX(100%) scale(0.5, 0.75);
+        color: mediumseagreen;
+    }
+}
+
+.tone3 {
+    animation-name: tone3;
+}
+@keyframes tone3 {
+    55% {
+        transform: translateY(0.8em) perspective(100px) rotateX(45deg) scale(0.5);
+        /* font-size: 13vw; */
+        /* font-size: 3em; */
+        color: dodgerblue;
+    }
+    75% {
+        transform: translateY(0.8em) perspective(100px) rotateX(45deg) scale(0.5);
+        /* font-size: 13vw; */
+        /* font-size: 3em; */
+        color: dodgerblue;
+    }
+}
+
+.tone4 {
+    animation-name: tone4;
+}
+@keyframes tone4 {
+    20% {
+        transform: translateY(0.8em) translateX(90%) perspective(100px)
+        rotateX(45deg) skew(-15deg, 0deg) scale(0.5);
+        /* font-size: 13vw;
+        font-size: 3em; */
+        color: blueviolet;
+    }
+}
+
+.tone0 {
+    animation-name: tone0;
+}
+
+@keyframes tone0 {
+    0% {
+        transform: scale(0.95);
+    }
+
+    25% {
+        transform: scale(1.5);
+        color: grey;
+    }
+}

@@ -1,7 +1,10 @@
 .container {
     display: flex;
+    height: calc(100% - 20px);
+    width: 100%;
     flex-direction: column;
     align-items: center;
+    /* border: 2px solid yellow; */
 }
 .vocabContainer {
     padding: 20px;

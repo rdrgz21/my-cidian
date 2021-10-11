@@ -1,0 +1,75 @@
+.container {
+    width: 100%;
+    height: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    top: 0;
+    position: absolute;
+}
+.container button {
+    width: 50%;
+    height: 50%;
+    border-width: 0;
+    background: transparent;
+    position: relative;
+}
+.container span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: 200;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    /* color: rgb(245, 245,245); */
+    color: black;
+}
+.container button:nth-child(1) span {
+    top: 10px;
+    left: 10px;
+}
+.container button:nth-child(2) span {
+    top: 10px;
+    right: 10px;
+}
+.container button:nth-child(3) span {
+    bottom: 10px;
+    left: 10px;
+}
+.container button:nth-child(4) span {
+    bottom: 10px;
+    right: 10px;
+}
+.container button:nth-child(1):active {
+    border: solid crimson;
+    border-width: 5px 0 0 5px;
+}
+.container button:nth-child(2):active {
+    border: solid mediumseagreen;
+    border-width: 5px 5px 0 0;
+}
+.container button:nth-child(3):active {
+    border: solid dodgerblue;
+    border-width: 0 0 5px 5px;
+}
+.container button:nth-child(4):active {
+    border: solid blueviolet;
+    border-width: 0 5px 5px 0;
+}
+.container button.savedToneButton:active {
+    border: solid grey;
+}
+.container button.savedToneButton:nth-child(1):active {
+    border-width: 5px 0 0 5px;
+}
+.container button.savedToneButton:nth-child(2):active {
+    border-width: 5px 5px 0 0;
+}
+.container button.savedToneButton:nth-child(3):active {
+    border-width: 0 0 5px 5px;
+}
+.container button.savedToneButton:nth-child(4):active {
+    border-width: 0 5px 5px 0;
+}

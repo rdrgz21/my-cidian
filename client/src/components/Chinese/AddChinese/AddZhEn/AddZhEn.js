@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import AddZhEnCSS from "./AddZhEn.module.css";
+import Input from '../../../General/Input/Input';
 
 export const AddZhEn = (props) => {
 
@@ -35,8 +36,8 @@ export const AddZhEn = (props) => {
         <div className={AddZhEnCSS.container}>
             <form className={AddZhEnCSS.form} onSubmit={handleSubmit}>
                <div className={AddZhEnCSS.inputContainer}>
-                    <input className={AddZhEnCSS.input} onChange={handleChange} type='text' name='chinese' placeholder='Chinese' value={input.japanese} required />
-                    <input className={AddZhEnCSS.input} onChange={handleChange} type='text' placeholder='English' name='meaning' value={input.reading} />
+                    <Input placeholder='中文' handleChange={handleChange} name='chinese' value={input.chinese} />
+                    <Input placeholder='English' handleChange={handleChange} name='meaning' value={input.meaning} />
                </div>
                <button className={AddZhEnCSS.button}>Save</button>
            </form>

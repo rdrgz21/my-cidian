@@ -1,0 +1,59 @@
+.customField {
+    position: relative;
+    font-size: 7vh;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15vw;
+    transition: border 0.2s ease;
+    padding: 5px;
+    border: 5px solid transparent;
+}
+.placeholder {
+    width: 100%;
+    box-sizing: border-box;
+    color: grey;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    white-space: nowrap;
+    transition: 
+        top 0.3s ease-in-out,
+        color 0.3s ease-in-out,
+        font-size 0.3s ease-in-out
+}
+.placeholder p {
+    width: 100%;
+    margin:  0 auto;
+
+}
+.input:focus, .input:valid {
+    border-color: orange;
+    outline: none;
+    background-color: rgb(245, 245,245);
+    transition-delay: 0.1s;
+}
+
+.input:valid + .placeholder,
+.input:focus + .placeholder {
+    top: 12px;
+    font-size: 2vh;
+}
+
+.placeholder {
+    width: 100%;
+}
+
+.input:valid + .placeholder p,
+.input:focus + .placeholder p {
+    color: orange;
+    background-color: rgb(245, 245,245);
+    width: fit-content;
+    padding: 0 5px;
+
+}

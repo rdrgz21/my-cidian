@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 html,
 body {
@@ -11,9 +12,9 @@ body {
 }
 .appContainer{
   margin: 0;
-  padding: 70px 10px 10px;
+  padding: 80px 10px 0;
   display: flex;
   justify-content: center;
-  height: calc(100vh - 80px);
+  height: 100vh;
 }
 

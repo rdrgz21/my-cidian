@@ -1,7 +1,21 @@
 .container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 20px);
+    width: 100%;
+    /* border: 2px solid blue; */
 }
 .charactersContainer {
+    width: 100%;
     display: flex;
     justify-content: center;
+    /* border: 2px solid orange; */
+}
+.container h2 {
+    /* border: 2px solid red; */
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center;
 }

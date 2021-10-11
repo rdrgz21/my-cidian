@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import AddSingleReadingCSS from "./AddSingleReading.module.css";
+import Input from '../../../General/Input/Input';
 
 export const AddSingleReading = props => {
 
@@ -20,11 +21,9 @@ export const AddSingleReading = props => {
 
     const handleClick = event => {
         event.preventDefault();
-        // save reading to savedReadings array
         constructReadings();
         nextCharacter();
         if (index === savedReadings.length-1) {
-            console.log('Last character');
             nextStage();
         }
     } 
@@ -32,7 +31,7 @@ export const AddSingleReading = props => {
     return (
         <div className={AddSingleReadingCSS.singleCharacterEdit}>
             <h1>{savedCharacter}</h1>
-            <input onChange={handleChange} type='text' placeholder={savedReadings[index] ? savedReadings[index] : 'Add reading'} value={input}/>
+            <Input placeholder='Reading' handleChange={handleChange} name='reading' value={input} />
             <div>
                 {editingCharacter > 0 && <button onClick={previousCharacter}>Back</button>}
                 <button onClick={handleClick}>Next</button>

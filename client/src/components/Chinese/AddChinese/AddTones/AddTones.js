@@ -7,6 +7,8 @@ export const AddTones = props => {
 
     const {savedCharacters, savedTones, savedReadings, setTones, savedPinyin, setPinyin, nextStage} = props;
 
+    // TODO: FIX -Something about way the AddSingleTone is being rendered with functions defined here is causing this component to be rerendered unnecessarily
+
     const [editingCharacter, setEditingCharacter] = useState(0);
 
     const nextCharacter = () => setEditingCharacter(editingCharacter + 1);
@@ -14,6 +16,8 @@ export const AddTones = props => {
     const previousCharacter = () => setEditingCharacter(editingCharacter - 1);
 
     useEffect(()=>setPinyin(savedReadings), []);
+
+    console.log('Hello from add tone');
 
     return (
         <div className={AddTonesCSS.container}>
