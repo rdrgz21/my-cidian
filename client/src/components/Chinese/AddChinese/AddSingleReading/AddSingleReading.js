@@ -31,11 +31,13 @@ export const AddSingleReading = props => {
     return (
         <div className={AddSingleReadingCSS.singleCharacterEdit}>
             <h1>{savedCharacter}</h1>
-            <Input placeholder='Reading' handleChange={handleChange} name='reading' value={input} />
-            <div>
-                {editingCharacter > 0 && <button onClick={previousCharacter}>Back</button>}
-                <button onClick={handleClick}>Next</button>
-            </div>
+            <form>
+                <Input placeholder='Reading' handleChange={handleChange} name='reading' value={input} />
+                <div>
+                    {editingCharacter > 0 && <button onClick={previousCharacter} type='button'>Back</button>}
+                    <button onClick={handleClick} type='submit'>Next</button>
+                </div>
+            </form>
         </div>
     )
 };
