@@ -7,6 +7,10 @@
     margin: 10px;
 }
 .singleCharacterEdit form {
+    display: flex;
+    flex-direction: column;
+}
+.singleCharacterEdit div {
     text-align: center;
 }
 .singleCharacterEdit h1 {
