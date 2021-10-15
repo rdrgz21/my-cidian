@@ -8,7 +8,7 @@ export const Vocab = () => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
 
     const getVocab = async () => {
-        const res = await axios.get('/api/vocab');
+        const res = await axios.get('/api/vocab/ja');
         console.log(res.data.foundWords);
         setDatabaseVocab(res.data.foundWords);
     };

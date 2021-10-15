@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import AddChineseCSS from "./AddChinese.module.css";
 import AddZhEn from './AddZhEn/AddZhEn';
 import AddReadings from './AddReadings/AddReadings';
@@ -16,8 +17,14 @@ export const AddChinese = () => {
     const [stage, setStage] = useState(1);
 
     const nextStage = () => {
-        setStage(stage + 1);
+        if (stage < 4) {
+            setStage(stage + 1);
+        } else {
+            setStage(1);
+            setMessage('');
+        }
     };
+    
     const previousStage = () => setStage(stage - 1);
 
     const createBaseArrays = (string) => {
@@ -39,11 +46,35 @@ export const AddChinese = () => {
             case 3:
                 return <AddTones savedCharacters={characters} savedReadings={readings} savedTones={tones} setTones={setTones} savedPinyin={pinyin} setPinyin={setPinyin} nextStage={nextStage} />
             case 4:
-                return <Review savedCharacters={characters} savedPinyin={pinyin} savedMeaning={meaning} savedTones={tones} />
+                return <Review savedCharacters={characters} savedPinyin={pinyin} savedMeaning={meaning} savedTones={tones} message={message} handleSubmit={handleSubmit} />
             default:
                 return null;
         }
     }
+
+    // Send to DB
+
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const newVocab = {
+            chinese: chinese,
+            characters: characters,
+            pinyin: pinyin,
+            english: meaning
+        };
+
+        console.log(newVocab);
+        
+        const response = await axios.post('/api/vocab/zh', newVocab, {
+            header: {
+                'Content-Type': 'application/json'
+            }
+        });
+        setMessage(response.data.message);
+    };
 
     return (
         <div className={AddChineseCSS.container}>

@@ -23,7 +23,7 @@ export const AddVocab = () => {
 
         console.log(newVocab);
         
-        const response = await axios.post('/api/vocab', newVocab, {
+        const response = await axios.post('/api/vocab/ja', newVocab, {
             header: {
                 'Content-Type': 'application/json'
             }

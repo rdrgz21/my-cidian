@@ -18,7 +18,7 @@ export const Review = props => {
         setAnimationPlayedTrue();
     }, []);
 
-    const {savedCharacters, savedPinyin, savedMeaning, savedTones} = props; 
+    const {savedCharacters, savedPinyin, savedMeaning, savedTones, message, handleSubmit} = props; 
 
     const showIndivCharReview = () => {
         return savedCharacters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={savedPinyin[index]} tone={savedTones[index]} wordLength={savedCharacters.length} index={index} key={index} />))
@@ -31,6 +31,8 @@ export const Review = props => {
             </div>
             <h2>{savedMeaning}</h2>
             <button onClick={resetAnimation}>Replay</button>
+            <button onClick={handleSubmit}>Save</button>
+            <p>{message}</p>
        </div>
     )
 };

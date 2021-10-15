@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const JapaneseWord = require('./models/japaneseWord');
 const JapaneseSentence = require('./models/japaneseSentence');
 const JapaneseCorrection = require('./models/japaneseCorrection');
+const ChineseWord = require('./models/chineseWord');
 
 dotenv.config({ path: './.env'});
 
@@ -34,7 +35,7 @@ connectDB();
 
 // VOCAB - Add & retrieve
 
-app.get('/api/vocab', async (req, res) => {
+app.get('/api/vocab/ja', async (req, res) => {
     try {
         const foundWords = await JapaneseWord.find();
         res.json({
@@ -45,8 +46,13 @@ app.get('/api/vocab', async (req, res) => {
     }
 });
 
-app.post('/api/vocab', async (req, res) => {
+// ADD JAPANESE WORD
+
+app.post('/api/vocab/ja', async (req, res) => {
     console.log(req.body);
+
+    const lang = req.params.lang;
+    console.log({lang});
 
     const japanese = req.body.japanese;
     const reading = req.body.reading;
@@ -64,6 +70,44 @@ app.post('/api/vocab', async (req, res) => {
                 {
                     japanese,
                     reading,
+                    english
+                }
+            );
+    
+            res.json({
+                message: "New vocab added"
+            })
+        }
+    } catch (error) {
+        res.json({
+            message: "This vocab was not added"
+        })
+    }   
+});
+
+// ADD CHINESE WORD
+
+app.post('/api/vocab/zh', async (req, res) => {
+    console.log(req.body);
+
+    const chinese = req.body.chinese;
+    const characters = req.body.characters;
+    const pinyin = req.body.pinyin;
+    const english = req.body.english
+
+    try {
+        const existingTango = await ChineseWord.find({ chinese });
+
+        if (existingTango.length > 0) {
+            res.json({
+                message: 'Sorry, that word already exists in the database'
+            })
+        } else {
+            await ChineseWord.create(
+                {
+                    chinese,
+                    characters,
+                    pinyin,
                     english
                 }
             );
