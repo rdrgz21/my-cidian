@@ -49,7 +49,6 @@ const reducer = (state, action) => {
         case CHINESE_ACTIONS.PREV_STAGE:
             return {...state, stage: state.stage - 1};
         case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
-            console.log(action.payload);
             return {...state, tones: action.payload.tones, pinyin: action.payload.pinyin};
         default:
             return state;    

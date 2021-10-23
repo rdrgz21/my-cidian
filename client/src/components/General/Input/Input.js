@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+   import React, {useEffect} from 'react';
 import InputCSS from './Input.module.css';
 
 const Input = ({placeholder, handleChange, name, value}) => {

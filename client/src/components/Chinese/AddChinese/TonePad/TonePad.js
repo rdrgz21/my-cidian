@@ -7,12 +7,9 @@ export const TonePad = props => {
 
     const tones = [1,2,3,4];
 
-    // console.log('Hi from TonePad')
-
     const [clickedTone, setClickedTone] = useState(0);
 
     useEffect(() => {
-        console.log(`Saved tone is now ${savedTone}`);
     }, [savedTone]);
 
     const handleClick = event => {
