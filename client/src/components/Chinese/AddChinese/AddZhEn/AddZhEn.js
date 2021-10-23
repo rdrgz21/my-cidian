@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import AddZhEnCSS from "./AddZhEn.module.css";
 import Input from '../../../General/Input/Input';
+import { AddChineseContext, CHINESE_ACTIONS } from '../AddChinese';
 
-export const AddZhEn = (props) => {
+export const AddZhEn = () => {
 
-    const {setChinese, setMeaning, createBaseArrays, nextStage} = props;
+    const {dispatch} = useContext(AddChineseContext);
 
     const [input, setInput] = useState({
         chinese: '',
         meaning: ''
     });
 
-    const handleChange = (event) => {
+    const handleChange =  event => {
         const {name, value} = event.target;
 
         setInput(prevInput => {
@@ -22,13 +23,23 @@ export const AddZhEn = (props) => {
         }) 
     };
 
+    const createBaseArrays = (string) => {
+        const splitCharacters = string.split('');
+        const emptyStringArray = new Array(splitCharacters.length).fill('');
+        const emptyNumberArray = new Array(splitCharacters.length).fill(0);
+        dispatch({type: CHINESE_ACTIONS.SET_CHARACTERS, payload: splitCharacters});
+        dispatch({type: CHINESE_ACTIONS.SET_READINGS, payload: emptyStringArray});
+        dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: emptyStringArray});
+        dispatch({type: CHINESE_ACTIONS.SET_TONES, payload: emptyNumberArray});
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         createBaseArrays(input.chinese);
-        setChinese(input.chinese);
-        setMeaning(input.meaning);
-        nextStage();
-        // Validate all characters/English
+        dispatch({type: CHINESE_ACTIONS.SET_CHINESE, payload: input.chinese});
+        dispatch({type: CHINESE_ACTIONS.SET_MEANING, payload: input.meaning});
+        dispatch({type: CHINESE_ACTIONS.NEXT_STAGE});
+        // TODO: Validate all characters/English
         
     };
 

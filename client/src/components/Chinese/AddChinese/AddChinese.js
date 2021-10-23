@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {createContext, useState, useReducer} from 'react';
 import axios from 'axios';
 import AddChineseCSS from "./AddChinese.module.css";
 import AddZhEn from './AddZhEn/AddZhEn';
@@ -6,51 +6,71 @@ import AddReadings from './AddReadings/AddReadings';
 import AddTones from './AddTones/AddTones';
 import Review from './Review/Review';
 
+export const AddChineseContext = createContext();
+
+const initialState = {
+    chinese: '',
+    meaning: '',
+    characters: [],
+    readings: [],
+    tones: [],
+    pinyin: [],
+    stage: 1
+}
+
+export const CHINESE_ACTIONS = {
+    SET_CHINESE: 'UPDATE_CHINESE',
+    SET_MEANING: 'SET_MEANING',
+    SET_CHARACTERS: 'SET_CHARACTERS',
+    SET_READINGS: 'SET_READINGS',
+    SET_TONES: 'SET_TONES',
+    SET_PINYIN: 'SET_PINYIN',
+    NEXT_STAGE: 'NEXT_STAGE',
+    PREV_STAGE: 'PREV_STAGE',
+    SET_TONES_AND_PINYIN: 'SET_TONES_AND_PINYIN'
+}
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case CHINESE_ACTIONS.SET_CHINESE:
+            return {...state, chinese: action.payload}; 
+        case CHINESE_ACTIONS.SET_MEANING:
+            return {...state, meaning: action.payload}; 
+        case CHINESE_ACTIONS.SET_CHARACTERS:
+            return {...state, characters: action.payload};
+        case CHINESE_ACTIONS.SET_READINGS:
+            return {...state, readings: action.payload}; 
+        case CHINESE_ACTIONS.SET_TONES:
+            return {...state, tones: action.payload}; 
+        case CHINESE_ACTIONS.SET_PINYIN:
+            return {...state, pinyin: action.payload}; 
+        case CHINESE_ACTIONS.NEXT_STAGE:
+            return nextStage(state);
+        case CHINESE_ACTIONS.PREV_STAGE:
+            return {...state, stage: state.stage - 1};
+        case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
+            console.log(action.payload);
+            return {...state, tones: action.payload.tones, pinyin: action.payload.pinyin};
+        default:
+            return state;    
+
+    }
+}
+
+const nextStage = (state) => {
+    if (state.stage < 4) {
+        return {...state, stage: state.stage+1}
+    } else {
+        return initialState;
+    }
+};
+
 export const AddChinese = () => {
 
-    const [chinese, setChinese] = useState('');
-    const [meaning, setMeaning] = useState('');
-    const [characters, setCharacters] = useState([]);
-    const [readings, setReadings] = useState([]);
-    const [tones, setTones] = useState([]);
-    const [pinyin, setPinyin] = useState([]);
-    const [stage, setStage] = useState(1);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-    const nextStage = () => {
-        if (stage < 4) {
-            setStage(stage + 1);
-        } else {
-            setStage(1);
-            setMessage('');
-        }
-    };
-    
-    const previousStage = () => setStage(stage - 1);
+    const {chinese, characters, pinyin, meaning, stage} = state;
 
-    const createBaseArrays = (string) => {
-        const splitCharacters = string.split('');
-        const emptyStringArray = new Array(splitCharacters.length).fill('');
-        const emptyNumberArray = new Array(splitCharacters.length).fill(0);
-        setCharacters(splitCharacters);
-        setReadings(emptyStringArray);
-        setPinyin(emptyStringArray);
-        setTones(emptyNumberArray);
-    }
-
-    const generateComponentByStage = stage => {
-        switch (stage) {
-            case 1:
-                return <AddZhEn setChinese={setChinese} setMeaning={setMeaning} createBaseArrays={createBaseArrays} nextStage={nextStage} />;
-            case 2:
-                return <AddReadings savedCharacters={characters} savedReadings={readings} setReadings={setReadings} nextStage={nextStage} />
-            case 3:
-                return <AddTones savedCharacters={characters} savedReadings={readings} savedTones={tones} setTones={setTones} savedPinyin={pinyin} setPinyin={setPinyin} nextStage={nextStage} />
-            case 4:
-                return <Review savedCharacters={characters} savedPinyin={pinyin} savedMeaning={meaning} savedTones={tones} message={message} handleSubmit={handleSubmit} />
-            default:
-                return null;
-        }
-    }
 
     // Send to DB
 
@@ -65,27 +85,43 @@ export const AddChinese = () => {
             pinyin: pinyin,
             english: meaning
         };
-
-        console.log(newVocab);
         
         const response = await axios.post('/api/vocab/zh', newVocab, {
             header: {
                 'Content-Type': 'application/json'
             }
         });
+
         setMessage(response.data.message);
     };
 
+    const generateComponentByStage = stage => {
+        switch (stage) {
+            case 1:
+                return <AddZhEn />;
+            case 2:
+                return <AddReadings />
+            case 3:
+                return <AddTones />
+            case 4:
+                return <Review message={message} setMessage={setMessage} handleSubmit={handleSubmit} />
+            default:
+                return null;
+        }
+    }
+
     return (
-        <div className={AddChineseCSS.container}>
+        <AddChineseContext.Provider value={{state: state, dispatch: dispatch}}>
+            <div className={AddChineseCSS.container}>
             {stage > 1 &&
                 (<div className={AddChineseCSS.buttonContainer}>
-                    <button onClick={previousStage}>Back</button>
-                    <button onClick={nextStage}>Next</button>
+                    <button onClick={() => dispatch({type: CHINESE_ACTIONS.PREV_STAGE})}>Back</button>
+                    <button onClick={() => dispatch({type: CHINESE_ACTIONS.NEXT_STAGE})}>Next</button>
                 </div>)
             }
             {generateComponentByStage(stage)}
        </div>
+        </AddChineseContext.Provider>
     )
 };
 
