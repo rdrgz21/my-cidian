@@ -8,17 +8,17 @@ nav {
   position: fixed;
   width: 100%;
   height: 60px;
+  z-index: 1;
 }
 .navLinks {
   display: flex;
-  width: 40%;
-  justify-content: space-around;
   align-items: center;
   list-style: none;
 }
 .navLink {
     color: white;
     text-decoration: none;
+    margin: 0 10px;
 }
 .navLinkActive {
     text-decoration: underline;
