@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid orange; */
+}
+.english {
+    /* border: 2px solid red; */
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    animation-name: englishDown;
+    animation-duration: 0.5s;
+}
+
+@keyframes englishDown {
+    0% {
+        transform: translateY(-3em);
+        opacity: 0;
+    }
+}

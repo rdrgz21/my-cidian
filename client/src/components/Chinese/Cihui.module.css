@@ -1,0 +1,41 @@
+.container {
+    border-bottom: 2px solid orange;
+    width: 100%;
+    margin: 5px 0;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    box-sizing: border-box;
+    position: relative;
+    height: fit-content;
+    opacity: 1;
+    position: relative;
+}
+.container:active {
+    font-weight: bold;
+}
+.reviewWordContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-size: 2em;
+    background-color: white;
+    animation-name: appear;
+    animation-duration: 0.4s;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+}

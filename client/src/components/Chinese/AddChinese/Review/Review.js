@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext, useCallback} from 'react';
 import ReviewCSS from "./Review.module.css";
-import IndivCharReview from '../IndivCharReview/IndivCharReview';
+
+import ReviewWord from './ReviewWord';
 import { AddChineseContext } from '../AddChinese';
 
 export const Review = props => {
@@ -9,7 +10,7 @@ export const Review = props => {
 
     const {state} = useContext(AddChineseContext);
 
-    const {characters, pinyin, meaning, tones} = state;
+    const {characters} = state;
 
     const [animationPlayed, setAnimationPlayed] = useState(false);
 
@@ -28,16 +29,9 @@ export const Review = props => {
         return setMessage('');
     }, [setAnimationPlayedTrue, setMessage]);
 
-    const showIndivCharReview = () => {
-        return characters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyin[index]} tone={tones[index]} wordLength={characters.length} index={index} key={index} />))
-    }
-    
     return (
         <div className={ReviewCSS.container}>
-            <div className={ReviewCSS.charactersContainer}>
-                {showIndivCharReview()}
-            </div>
-            <h2>{meaning}</h2>
+            <ReviewWord animationPlayed={animationPlayed} wordData={state} />
             <button onClick={resetAnimation}>Replay</button>
             <button onClick={handleSubmit}>Save</button>
             <p>{message}</p>
