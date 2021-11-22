@@ -6,9 +6,6 @@ const Navbar = props => {
 
   const {studyLang, setStudyLang} = props;
 
-  const isStudyingJapanese = studyLang === 'ja';
-  const isStudyChinese = studyLang === 'zh';
-
   return (
     <nav>
       <h3>Logo</h3>
@@ -17,18 +14,10 @@ const Navbar = props => {
         <NavLink exact to="/" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
           <li>Vocab</li>
         </NavLink>
-        {isStudyingJapanese && <NavLink exact to="/addvocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+        <NavLink exact to="/addvocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
           <li>Add Vocab</li>
-        </NavLink>}
-        {/* <NavLink exact to="/sentences" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
-          <li>Sentences</li>
         </NavLink>
-        <NavLink exact to="/addsentence" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
-          <li>Add Sentence</li>
-        </NavLink> */}
-        {isStudyChinese && <NavLink exact to="/addchinese" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
-          <li>Add Chinese</li>
-        </NavLink>}
+
       </ul>
     </nav>
   );

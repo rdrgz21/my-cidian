@@ -4,6 +4,7 @@ import { TonePad } from '../TonePad/TonePad';
 import AnimatedPinyin from '../AnimatedPinyin/AnimatedPinyin';
 import AddSingleToneCSS from "./AddSingleTone.module.css";
 import { CHINESE_ACTIONS, AddChineseContext } from '../AddChinese';
+import StyledButton from '../../../General/StyledButton/StyledButton';
 
 export const AddSingleTone = props => {
 
@@ -58,8 +59,8 @@ export const AddSingleTone = props => {
                 <TonePad handleToneClick={handleToneClick} savedTone={parseInt(tones[index])} />
             </div>
             <div className={AddSingleToneCSS.nextButtonContainer}>
-                {index > 0 && <button onClick={previousCharacter}>Back</button>}
-                <button onClick={handleClickNext}>Next</button>
+                {index > 0 && <StyledButton onClick={previousCharacter}>Back</StyledButton>}
+                <StyledButton onClick={handleClickNext}>Next</StyledButton>
             </div>
         </div>
     )

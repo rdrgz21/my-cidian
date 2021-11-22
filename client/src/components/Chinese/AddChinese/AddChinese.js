@@ -73,7 +73,7 @@ export const AddChinese = () => {
 
     // Send to DB
 
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState(' ');
 
     const handleSubmit = async (event) => {
         event.preventDefault();

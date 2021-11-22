@@ -11,7 +11,7 @@ import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 function App() {
   const [studyLang, setStudyLang] = useState('zh');
 
-  // const isStudyingJapanese = studyLang === 'ja';
+  const isStudyingJapanese = studyLang === 'ja';
   // const isStudyChinese = studyLang === 'zh';
 
   return (
@@ -20,10 +20,9 @@ function App() {
         <div className="appContainer">
           <Switch>
             <Route exact path="/" render={() => <Vocab lang={studyLang} />} />
-            <Route exact path="/addvocab" component={AddVocab} />
+            <Route exact path="/addvocab" component={isStudyingJapanese ? AddVocab : AddChinese} />
             <Route exact path="/sentences" component={SentencesPage} />
             <Route exact path="/addsentence" component={AddSentence} />
-            <Route exact path="/addchinese" component={AddChinese} />
           </Switch>
         </div>
       </Router>

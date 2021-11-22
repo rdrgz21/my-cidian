@@ -10,7 +10,7 @@ export const IndivCharReview = props => {
 
     const pinyinStyles = {fontSize: `${97.6/wordLength/5}vw`};
 
-R    const pinyinDelay = {animationDelay: `${0.5+(0.4*index)}s`};
+    const pinyinDelay = {animationDelay: `${0.5+(0.4*index)}s`};
 
     const containerWidth = {width: `${100/wordLength}%`};
 

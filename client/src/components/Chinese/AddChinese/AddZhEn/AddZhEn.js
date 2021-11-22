@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import AddZhEnCSS from "./AddZhEn.module.css";
 import Input from '../../../General/Input/Input';
 import { AddChineseContext, CHINESE_ACTIONS } from '../AddChinese';
+import StyledButton from '../../../General/StyledButton/StyledButton';
 
 export const AddZhEn = () => {
 
@@ -50,7 +51,7 @@ export const AddZhEn = () => {
                     <Input placeholder='中文' handleChange={handleChange} name='chinese' value={input.chinese} />
                     <Input placeholder='English' handleChange={handleChange} name='english' value={input.english} />
                </div>
-               <button className={AddZhEnCSS.button}>Save</button>
+               <StyledButton>Save</StyledButton>
            </form>
        </div>
     )

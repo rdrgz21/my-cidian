@@ -4,6 +4,7 @@ import Input from '../../../General/Input/Input';
 import { AddChineseContext } from '../AddChinese';
 import {CHINESE_ACTIONS} from '../AddChinese'
 ;
+import StyledButton from '../../../General/StyledButton/StyledButton';
 export const AddSingleReading = props => {
 
     const {nextCharacter, previousCharacter, index} = props;
@@ -40,8 +41,8 @@ export const AddSingleReading = props => {
             <form>
                 <Input placeholder='Reading' handleChange={handleChange} name='reading' value={input} />
                 <div>
-                    {index > 0 && <button onClick={previousCharacter} type='button'>Back</button>}
-                    <button onClick={handleClick} type='submit'>Next</button>
+                    {index > 0 && <StyledButton onClick={previousCharacter} type='button'>Back</StyledButton>}
+                    <StyledButton onClick={handleClick} type='submit'>Next</StyledButton>
                 </div>
             </form>
         </div>

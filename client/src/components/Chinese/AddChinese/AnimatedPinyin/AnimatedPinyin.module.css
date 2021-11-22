@@ -22,8 +22,6 @@
 @keyframes tone1 {
     50% {
         transform: translateY(-0.9em) perspective(100px) rotateX(-45deg) scale(0.5);
-        /* font-size: 17vw; */
-        /* font-size: 4em; */
         color: crimson;
     }
 }
@@ -33,10 +31,7 @@
 }
 @keyframes tone2 {
     50% {
-        /* font-size: 13vw; */
-        /* font-size: 3em; */
-        /* transform: skew(-5deg, -20deg) translateY(-0.03em) translateX(1.5em) scale(0.5); */
-        transform: skew(-5deg, -20deg) translateY(-0.3em) translateX(100%) scale(0.5, 0.75);
+        transform: skew(-5deg, -20deg) translateY(-0.3em) translateX(1em) scale(0.5, 0.75);
         color: mediumseagreen;
     }
 }
@@ -47,14 +42,10 @@
 @keyframes tone3 {
     55% {
         transform: translateY(0.8em) perspective(100px) rotateX(45deg) scale(0.5);
-        /* font-size: 13vw; */
-        /* font-size: 3em; */
         color: dodgerblue;
     }
     75% {
         transform: translateY(0.8em) perspective(100px) rotateX(45deg) scale(0.5);
-        /* font-size: 13vw; */
-        /* font-size: 3em; */
         color: dodgerblue;
     }
 }
@@ -66,8 +57,6 @@
     20% {
         transform: translateY(0.8em) translateX(90%) perspective(100px)
         rotateX(45deg) skew(-15deg, 0deg) scale(0.5);
-        /* font-size: 13vw;
-        font-size: 3em; */
         color: blueviolet;
     }
 }
