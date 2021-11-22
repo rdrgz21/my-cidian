@@ -23,7 +23,7 @@ export const Vocab = ({lang}) => {
         console.log('Getting vocab from DB');
         const res = await axios.get(vocabEndpoint());
         console.log(res.data.foundWords);
-        setDatabaseVocab(res.data.foundWords);
+        setDatabaseVocab(res.data.foundWords.reverse());
     };
 
     useEffect(()=>{
