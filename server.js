@@ -5,6 +5,11 @@ const JapaneseWord = require('./models/japaneseWord');
 const JapaneseSentence = require('./models/japaneseSentence');
 const JapaneseCorrection = require('./models/japaneseCorrection');
 const ChineseWord = require('./models/chineseWord');
+const bcrypt = require('bcrypt');
+const User = require('./models/user');
+const jwt = require('jsonwebtoken');
+const cookieparser = require('cookie-parser');
+const auth = require('./middleware/auth');
 
 dotenv.config({ path: './.env'});
 
@@ -12,6 +17,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ extended: false }));
+app.use(cookieparser());
 
 // Connect DB 
 
@@ -29,7 +35,101 @@ const connectDB = async () => {
 
 connectDB();
 
-// ROUTES
+// // ROUTES
+
+// REGISTER
+
+app.post("/register", async (req, res) => {
+    console.log("Attempting to register");
+    console.log(req.body);
+
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const hashedPassword = await bcrypt.hash(password, 8);
+
+    // Add function to check if email already in use
+    const otherUser = await User.find({ email: email});
+    console.log(otherUser);
+
+    if (otherUser.length > 0) {
+        res.send("Sorry, that email is already in use");
+    } else {
+        await User.create(
+            {
+                username: username,
+                email: email,
+                password: hashedPassword
+            }
+        )
+        res.send("User successfully registered");
+    }
+});
+
+// LOGIN
+
+app.post('/login', async (req,res) => {   
+
+    const username = req.body.username;
+    const password = req.body.password;
+
+
+    const user = await User.find({ username: username });
+    console.log( user );
+
+    if( user.length > 0) {
+        const isMatch = await bcrypt.compare(password, user[0].password)
+        console.log( isMatch );
+    
+        if (isMatch) {
+
+            const token = jwt.sign( {id: user[0]._id}, process.env.JWT_SECRET, {
+                expiresIn: process.env.JWT_EXPIRES_IN
+            });
+
+            console.log(token);
+
+            const cookieOptions = {
+                expires: new Date(
+                    Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                ),
+                httpOnly: true
+            }
+
+            res.cookie('jwt', token, cookieOptions)
+
+            res.send(
+                {
+                    message: "Login successful",
+                    loggedIn: true
+                }
+            );
+        } else {
+            res.send(
+                {
+                    message: "Login unsuccessful",
+                    loggedIn: false
+                }
+            );
+        }
+    } else {
+        res.send(
+            {
+                message: "Login unsuccessful",
+                loggedIn: false
+            }
+        );
+    }
+})
+
+// LOGOUT
+
+app.get('/logout', auth.logout, (req,res) => {
+    console.log("inside logout page")
+    res.send('User is logged out')
+})
+
 
 // VOCAB - Add & retrieve
 
