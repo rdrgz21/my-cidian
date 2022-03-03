@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import VocabCSS from "./Vocab.module.css";
+import VocabCSS from "../Pages/Vocab.module.css";
 
-export const AddVocab = () => {
+const AddVocab = () => {
 
     const [input, setInput] = useState({
         japanese: '',

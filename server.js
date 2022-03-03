@@ -39,7 +39,7 @@ connectDB();
 
 // REGISTER
 
-app.post("/register", async (req, res) => {
+app.post('/api/register', async (req, res) => {
     console.log("Attempting to register");
     console.log(req.body);
 
@@ -69,7 +69,7 @@ app.post("/register", async (req, res) => {
 
 // LOGIN
 
-app.post('/login', async (req,res) => {   
+app.post('/api/login', async (req,res) => {   
 
     const username = req.body.username;
     const password = req.body.password;
@@ -102,7 +102,8 @@ app.post('/login', async (req,res) => {
             res.send(
                 {
                     message: "Login successful",
-                    loggedIn: true
+                    loggedIn: true,
+                    username: username
                 }
             );
         } else {
@@ -125,7 +126,7 @@ app.post('/login', async (req,res) => {
 
 // LOGOUT
 
-app.get('/logout', auth.logout, (req,res) => {
+app.get('/api/logout', auth.logout, (req,res) => {
     console.log("inside logout page")
     res.send('User is logged out')
 })

@@ -18,6 +18,10 @@ const chineseWordSchema = new mongoose.Schema({
     },
     english: {
         type: String
+    },
+    username: {
+        type: String,
+        require: [true, 'Please add the username of whoever added this to the database']
     }
 });
 
