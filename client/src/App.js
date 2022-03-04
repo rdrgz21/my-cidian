@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -21,6 +22,19 @@ function App() {
 
   const [user, setUser] = useState(null);
 
+  const checkLogin = async () => {
+    try {
+      const res = await axios.get('/api/logged_in');
+      setUser(res.data.username);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
       <Router>
 
@@ -30,13 +44,14 @@ function App() {
         <div className="appContainer">
 
           <Switch>
-            <Route exact path="/" render={() => user ? <Vocab lang='zh' /> : <div>Home</div>} />
+            <Route exact path="/" render={() => user ? <Vocab user={user} /> : <div>Home</div>} />
 
             {!user && <Route exact path="/register" component={Register} />}
             {!user && <Route exact path="/login" render={() => <Login setUser={setUser} />} />}
 
             {/* <Route exact path="/addvocab" component={isStudyingJapanese ? AddVocab : AddChinese} /> */}
-            {user && <Route exact path="/addvocab" component={AddChinese} />}
+            
+            {user && <Route exact path="/addvocab" render={() => <AddChinese user={user} />} />}
 
             {/* <Route exact path="/sentences" component={SentencesPage} />
             <Route exact path="/addsentence" component={AddSentence} /> */}

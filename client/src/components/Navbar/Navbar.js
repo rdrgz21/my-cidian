@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import NavbarCSS from "./Navbar.module.css" ;
 import { NavLink } from "react-router-dom";
-import NavbarCSS from "./Navbar.module.css" 
+import LogoutModal from "../Modals/LogoutModal/LogoutModal";
+
 
 const Navbar = props => {
 
   // const {studyLang, setStudyLang, user, setUser} = props;
   const {user, setUser} = props;
+
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
+  useEffect(() => {
+    !user && setIsLogoutModalOpen(false); 
+  },[user]);
 
   return (
     <nav>
@@ -17,6 +25,7 @@ const Navbar = props => {
       {/* <button onClick={() => setStudyLang(studyLang === 'zh' ? 'ja' : 'zh')}>Switch Lang</button> */}
       
       <ul className={NavbarCSS.navLinks}>
+
         {/* Not logged in links */}
         {!user && 
           <NavLink exact to="/register" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
@@ -28,6 +37,7 @@ const Navbar = props => {
             <li>Login</li>
           </NavLink>
         }
+
         {/* Logged in links */}
         {user && 
           <NavLink exact to="/" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
@@ -39,8 +49,11 @@ const Navbar = props => {
             <li>Add Vocab</li>
           </NavLink>
         }
-
+         {user && 
+          <button className={NavbarCSS.button} onClick={() => setIsLogoutModalOpen(true)} >Logout</button>
+        }
       </ul>
+      {user && isLogoutModalOpen && <LogoutModal setIsLogoutModalOpen={setIsLogoutModalOpen} setUser={setUser} />}
     </nav>
   );
 }

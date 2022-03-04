@@ -5,15 +5,19 @@ const User = require('../models/user');
 exports.isLoggedIn = async ( req, res, next ) => {
     //check if the 'jwt' cookie exists
     if( req.cookies.jwt ){
-        //verify the token
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
-        console.log(decoded);
+        try {
+            //verify the token
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+            console.log('decoded', decoded);
 
-        const theUser = await User.findById(decoded.id);
-        console.log(theUser)
+            const theUser = await User.findById(decoded.id);
+            console.log(theUser, 'THE USER')
 
-        req.foundUser = theUser;
-        req.userId = decoded.id; 
+            req.foundUser = theUser;
+            req.userId = decoded.id; 
+        } catch (error) {
+            console.error(error);
+        }
     }
     next();
 }

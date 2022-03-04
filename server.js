@@ -131,23 +131,41 @@ app.get('/api/logout', auth.logout, (req,res) => {
     res.send('User is logged out')
 })
 
+// CHECK IF LOGGED IN
 
-// VOCAB - Add & retrieve
-
-app.get('/api/vocab/ja', async (req, res) => {
-    try {
-        const foundWords = await JapaneseWord.find();
-        res.json({
-            foundWords
-        })
-    } catch (error) {
-        console.log(error);
+app.get('/api/logged_in', auth.isLoggedIn, (req,res) => {
+    console.log("Checking if user is logged in")
+    if(req.foundUser) {
+        console.log("User is logged in");
+        res.send(
+            {
+                username: req.foundUser.username,
+                email: req.foundUser.email
+            }
+        )
+    } else {
+        res.send("User is not logged in")
     }
 });
 
-app.get('/api/vocab/zh', async (req, res) => {
+
+// VOCAB - Add & retrieve
+
+// app.get('/api/vocab/ja', async (req, res) => {
+//     try {
+//         const foundWords = await JapaneseWord.find();
+//         res.json({
+//             foundWords
+//         })
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+
+app.get('/api/vocab/zh/:id', async (req, res) => {
+    const username = req.params.id;
     try {
-        const foundWords = await ChineseWord.find();
+        const foundWords = await ChineseWord.find({username: username});
         res.json({
             foundWords
         })
@@ -158,42 +176,42 @@ app.get('/api/vocab/zh', async (req, res) => {
 
 // ADD JAPANESE WORD
 
-app.post('/api/vocab/ja', async (req, res) => {
-    console.log(req.body);
+// app.post('/api/vocab/ja', async (req, res) => {
+//     console.log(req.body);
 
-    const lang = req.params.lang;
-    console.log({lang});
+//     const lang = req.params.lang;
+//     console.log({lang});
 
-    const japanese = req.body.japanese;
-    const reading = req.body.reading;
-    const english = req.body.english;
+//     const japanese = req.body.japanese;
+//     const reading = req.body.reading;
+//     const english = req.body.english;
 
-    try {
-        const existingTango = await JapaneseWord.find({ japanese });
+//     try {
+//         const existingTango = await JapaneseWord.find({ japanese });
 
-        if (existingTango.length > 0) {
-            res.json({
-                message: 'Sorry, that word already exists in the database'
-            })
-        } else {
-            await JapaneseWord.create(
-                {
-                    japanese,
-                    reading,
-                    english
-                }
-            );
+//         if (existingTango.length > 0) {
+//             res.json({
+//                 message: 'Sorry, that word already exists in the database'
+//             })
+//         } else {
+//             await JapaneseWord.create(
+//                 {
+//                     japanese,
+//                     reading,
+//                     english
+//                 }
+//             );
     
-            res.json({
-                message: "New vocab added"
-            })
-        }
-    } catch (error) {
-        res.json({
-            message: "This vocab was not added"
-        })
-    }   
-});
+//             res.json({
+//                 message: "New vocab added"
+//             })
+//         }
+//     } catch (error) {
+//         res.json({
+//             message: "This vocab was not added"
+//         })
+//     }   
+// });
 
 // ADD CHINESE WORD
 
@@ -204,14 +222,15 @@ app.post('/api/vocab/zh', async (req, res) => {
     const characters = req.body.characters;
     const pinyin = req.body.pinyin;
     const tones = req.body.tones;
-    const english = req.body.english
+    const english = req.body.english;
+    const username = req.body.user;
 
     try {
-        const existingTango = await ChineseWord.find({ chinese });
+        const existingTango = await ChineseWord.find({ chinese, username });
 
         if (existingTango.length > 0) {
             res.json({
-                message: 'Sorry, that word already exists in the database'
+                message: "Sorry, you've already saved this word!"
             })
         } else {
             await ChineseWord.create(
@@ -220,7 +239,8 @@ app.post('/api/vocab/zh', async (req, res) => {
                     characters,
                     pinyin,
                     tones,
-                    english
+                    english,
+                    username
                 }
             );
     
