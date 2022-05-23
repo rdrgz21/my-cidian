@@ -6,8 +6,10 @@ import VocabCSS from "./Vocab.module.css";
 
 export const Vocab = ({user}) => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
+    const [isLoading, setLoading] = useState(false);
 
     const getVocab = async () => {
+        setLoading(true);
         // TODO: create a loading spinner and error message 
         if(user) {
             try {
@@ -17,6 +19,7 @@ export const Vocab = ({user}) => {
             } catch (error) {
                 console.error(error);
             }
+            setLoading(false);
             return;
         }
         return 'User not logged in';
@@ -46,6 +49,7 @@ export const Vocab = ({user}) => {
                 key={cihui._id}
                 id={cihui._id}
                 zh={cihui.chinese}
+                readings={cihui.readings}
                 characters={cihui.characters}
                 english={cihui.english}
                 pinyin={cihui.pinyin}
@@ -66,7 +70,8 @@ export const Vocab = ({user}) => {
         // <div className={isLangJapanese ? VocabCSS.containerJa : VocabCSS.containerZh}>
         <div className={VocabCSS.containerZh}>
             {allVocab()}
-            {!databaseVocab.length && <div>You have no vocabulary saved yet! Try adding a word.</div>}
+            {isLoading && <div>Loading...</div>}
+            {!databaseVocab.length && !isLoading && <div>You have no vocabulary saved yet! Try adding a word.</div>}
         </div>
     )
 };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CihuiCSS from './Cihui.module.css';
 import ReviewWord from './AddChinese/Review/ReviewWord';
 
@@ -20,7 +20,14 @@ const Cihui = props => {
             setIsClicked(true)
         }
         getVocab();
-    }
+    };
+
+    useEffect(() => {
+        return () => {
+            setIsClicked(false);
+            setIsReviewWordUnmounting(false);
+        }
+    },[]);
 
     return (
         <div onClick={(e) => openCloseReviewWord(e)} className={CihuiCSS.container}>

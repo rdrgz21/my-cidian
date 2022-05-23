@@ -9,11 +9,10 @@ export const AddSingleReading = props => {
 
     const {nextCharacter, previousCharacter, index} = props;
 
-    const [input, setInput] = useState('');
-
     const {state, dispatch} = useContext(AddChineseContext);
 
     const {readings, characters} = state;
+    const [input, setInput] = useState(readings[index]);
 
     const constructReadings = () => {
         const firstSection = readings.slice(0, index);

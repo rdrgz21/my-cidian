@@ -1,10 +1,13 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import ReviewWordCSS from './ReviewWord.module.css';
 import IndivCharReview from '../IndivCharReview/IndivCharReview';
 import axios from 'axios';
 
 const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord = false}) => {
-    const {id, characters, pinyin, english, tones} = wordData;
+    const history = useHistory();
+
+    const {id, characters, readings, pinyin, english, tones, zh} = wordData;
     
     const showIndivCharReview = () => {
         return characters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyin[index]} tone={tones[index]} wordLength={characters.length} index={index} key={index} />))
@@ -23,6 +26,28 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
         openCloseReviewWord();
     };
 
+    const editWordState = {
+            id: id,
+            chinese: zh,
+            english: english,
+            characters: characters,
+            readings: readings,
+            tones: tones,
+            pinyin: pinyin,
+            stage: 1,
+            isEditing: true
+    }
+
+    const editWord = async (e) => {
+        e.stopPropagation();
+        history.push({
+            pathname: '/editvocab',
+            state: {
+                wordToEdit: editWordState
+            }
+        })
+    };
+
     return (
         <>
             <div className={ReviewWordCSS.container}>
@@ -31,7 +56,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
             <h2 className={ReviewWordCSS.english}>{english}</h2>
             {isSavedWord &&
                 <div className={ReviewWordCSS.buttonContainer}>
-                    <button>Edit</button>
+                    <button onClick={(e) => editWord(e)}>Edit</button>
                     <button onClick={(e) => deleteWord(e)}>Delete</button>
                 </div>
             }

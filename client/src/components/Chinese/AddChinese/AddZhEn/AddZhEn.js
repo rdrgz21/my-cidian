@@ -6,11 +6,13 @@ import StyledButton from '../../../General/StyledButton/StyledButton';
 
 export const AddZhEn = () => {
 
-    const {dispatch} = useContext(AddChineseContext);
+    const {state, dispatch} = useContext(AddChineseContext);
+
+    const {chinese, english, isEditing} = state;
 
     const [input, setInput] = useState({
-        chinese: '',
-        english: ''
+        chinese: chinese,
+        english: english
     });
 
     const handleChange =  event => {
@@ -36,7 +38,9 @@ export const AddZhEn = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        createBaseArrays(input.chinese);
+        if (!isEditing) {
+            createBaseArrays(input.chinese);
+        }
         dispatch({type: CHINESE_ACTIONS.SET_CHINESE, payload: input.chinese});
         dispatch({type: CHINESE_ACTIONS.SET_ENGLISH, payload: input.english});
         dispatch({type: CHINESE_ACTIONS.NEXT_STAGE});
