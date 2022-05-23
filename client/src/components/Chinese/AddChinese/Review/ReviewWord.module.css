@@ -12,6 +12,9 @@
     animation-name: englishDown;
     animation-duration: 0.5s;
 }
+.buttonContainer {
+    display: flex;
+}
 
 @keyframes englishDown {
     0% {
