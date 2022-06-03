@@ -25,12 +25,12 @@
     white-space: nowrap;
     transition: 
         top 0.3s ease-in-out,
-        color 0.3s ease-in-out,
         font-size 0.3s ease-in-out
 }
 .placeholder p {
     width: 100%;
     margin:  0 auto;
+    transition: color 0.3s ease-in-out;
 
 }
 .input:focus, .input:valid {
@@ -57,4 +57,10 @@
     width: fit-content;
     padding: 0 5px;
 
+}
+.inputInvalid {
+    border-color: red !important;
+}
+.inputInvalid + .placeholder p {
+    color: red !important;
 }
