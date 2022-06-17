@@ -8,8 +8,6 @@ export const StageBar = props => {
 
     const {stage} = state;
 
-    console.log(stage, 'STAGE');
-
     const handleClick = e => {
         dispatch({type: CHINESE_ACTIONS.SET_STAGE, payload: parseInt(e.target.value)});
     }
