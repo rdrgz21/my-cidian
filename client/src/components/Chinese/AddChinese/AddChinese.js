@@ -29,6 +29,7 @@ export const CHINESE_ACTIONS = {
     SET_PINYIN: 'SET_PINYIN',
     NEXT_STAGE: 'NEXT_STAGE',
     PREV_STAGE: 'PREV_STAGE',
+    RESET: 'RESET',
     SET_TONES_AND_PINYIN: 'SET_TONES_AND_PINYIN'
 }
 
@@ -50,6 +51,8 @@ const reducer = (state, action) => {
             return nextStage(state);
         case CHINESE_ACTIONS.PREV_STAGE:
             return {...state, stage: state.stage - 1};
+        case CHINESE_ACTIONS.RESET:
+            return {...initialState};
         case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
             return {...state, tones: action.payload.tones, pinyin: action.payload.pinyin};
         default:
@@ -90,6 +93,11 @@ export const AddChinese = ({user}) => {
             english: english,
             user: user
         };
+
+        if (message === 'New vocab added') {
+            setMessage(' ');
+            dispatch({type: CHINESE_ACTIONS.RESET});
+        }
 
         if (isEditing) {
             const response = await axios.patch(`/api/vocab/zh/${id}`, newVocab, {
