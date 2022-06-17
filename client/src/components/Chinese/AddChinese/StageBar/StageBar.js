@@ -24,11 +24,11 @@ export const StageBar = props => {
             </div>
             <div>
                 <button className={stage === 3 ? StageBarCSS.activeButton : StageBarCSS.button} onClick={handleClick} value={3}></button>
-                <span>聲調</span>
+                <span>声调</span>
             </div>
             <div>
                 <button className={stage === 4 ? StageBarCSS.activeButton : StageBarCSS.button} onClick={handleClick} value={4}></button>
-                <span>複習</span>
+                <span>复习</span>
             </div>
        </div>
     )
