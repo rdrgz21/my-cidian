@@ -13,6 +13,9 @@
     align-items: center;
     position: relative;
 }
+.container button {
+    z-index: 2;
+}
 .button {
     border-radius: 50%;
     width: 1.5em;
@@ -29,7 +32,6 @@
     border: none;
     background-color: rgb(227, 150, 62);
     position: relative;
-    z-index: 2;
     transition: background-color ease-in-out 0.2s;
 }
 .activeButton ~ span {
