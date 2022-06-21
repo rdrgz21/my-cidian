@@ -1,3 +1,6 @@
+.container {
+    height: 5vh;
+}
 .editingBullet {
     color: orange;
 }
