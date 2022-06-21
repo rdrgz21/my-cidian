@@ -2,8 +2,7 @@
     height: calc(100% - 5vh);
     width: 100%;
     display: grid;
-    gap: 0.5rem;
-    grid-auto-rows: 1fr 4fr 1fr;
+    grid-auto-rows: 1fr 2fr 1fr;
 }
 .middleRow {
     display: flex;
@@ -24,7 +23,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    font-size: clamp(1px, 85vw, 450px);
+    font-size: clamp(1px, 85vw, 35vh);
     position: absolute;
 }
 .singleToneEdit h2 {
