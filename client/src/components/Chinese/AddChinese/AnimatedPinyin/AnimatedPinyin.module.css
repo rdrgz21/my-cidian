@@ -86,3 +86,15 @@
         color: grey;
     }
 }
+
+.toneWrapper {
+    animation-name: pinyinUp;
+    animation-duration: 0.5s;
+}
+
+@keyframes pinyinUp {
+    0% {
+        transform: translateY(3em);
+        opacity: 0;
+    }
+}

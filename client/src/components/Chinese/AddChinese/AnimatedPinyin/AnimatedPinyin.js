@@ -24,7 +24,9 @@ export const AnimatedPinyin = props => {
 
     return (
         <div className={AnimatedPinyinCSS.container} style={pinyinStyles}>
-            <p className={!animationPlayed ? getToneStyles(tone) : undefined} style={pinyinDelay}>{pinyin}</p>
+            <span className={pinyinDelay && AnimatedPinyinCSS.toneWrapper}>
+                <p className={!animationPlayed ? getToneStyles(tone) : undefined} style={pinyinDelay}>{pinyin}</p>
+            </span>
        </div>
     )
 };

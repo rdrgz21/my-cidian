@@ -104,6 +104,7 @@ app.post('/api/vocab/zh', async (req, res) => {
     const chinese = req.body.chinese;
     const characters = req.body.characters;
     const pinyin = req.body.pinyin;
+    const tones = req.body.tones;
     const english = req.body.english
 
     try {
@@ -119,6 +120,7 @@ app.post('/api/vocab/zh', async (req, res) => {
                     chinese,
                     characters,
                     pinyin,
+                    tones,
                     english
                 }
             );

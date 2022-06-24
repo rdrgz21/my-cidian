@@ -12,6 +12,10 @@ const chineseWordSchema = new mongoose.Schema({
         type: Array,
         require: [true, 'Please add the corresponding pinyin']
     },
+    tones: {
+        type: Array,
+        require: [true, 'Please add the corresponding tones']
+    },
     english: {
         type: String
     }

@@ -10,7 +10,7 @@ export const AddChineseContext = createContext();
 
 const initialState = {
     chinese: '',
-    meaning: '',
+    english: '',
     characters: [],
     readings: [],
     tones: [],
@@ -20,7 +20,7 @@ const initialState = {
 
 export const CHINESE_ACTIONS = {
     SET_CHINESE: 'UPDATE_CHINESE',
-    SET_MEANING: 'SET_MEANING',
+    SET_ENGLISH: 'SET_ENGLISH',
     SET_CHARACTERS: 'SET_CHARACTERS',
     SET_READINGS: 'SET_READINGS',
     SET_TONES: 'SET_TONES',
@@ -34,8 +34,8 @@ const reducer = (state, action) => {
     switch (action.type) {
         case CHINESE_ACTIONS.SET_CHINESE:
             return {...state, chinese: action.payload}; 
-        case CHINESE_ACTIONS.SET_MEANING:
-            return {...state, meaning: action.payload}; 
+        case CHINESE_ACTIONS.SET_ENGLISH:
+            return {...state, english: action.payload}; 
         case CHINESE_ACTIONS.SET_CHARACTERS:
             return {...state, characters: action.payload};
         case CHINESE_ACTIONS.SET_READINGS:
@@ -68,7 +68,7 @@ export const AddChinese = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const {chinese, characters, pinyin, meaning, stage} = state;
+    const {chinese, characters, pinyin, tones, english, stage} = state;
 
 
     // Send to DB
@@ -82,7 +82,8 @@ export const AddChinese = () => {
             chinese: chinese,
             characters: characters,
             pinyin: pinyin,
-            english: meaning
+            tones: tones,
+            english: english
         };
         
         const response = await axios.post('/api/vocab/zh', newVocab, {

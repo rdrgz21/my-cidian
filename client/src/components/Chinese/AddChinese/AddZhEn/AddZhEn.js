@@ -9,7 +9,7 @@ export const AddZhEn = () => {
 
     const [input, setInput] = useState({
         chinese: '',
-        meaning: ''
+        english: ''
     });
 
     const handleChange =  event => {
@@ -37,7 +37,7 @@ export const AddZhEn = () => {
         event.preventDefault();
         createBaseArrays(input.chinese);
         dispatch({type: CHINESE_ACTIONS.SET_CHINESE, payload: input.chinese});
-        dispatch({type: CHINESE_ACTIONS.SET_MEANING, payload: input.meaning});
+        dispatch({type: CHINESE_ACTIONS.SET_ENGLISH, payload: input.english});
         dispatch({type: CHINESE_ACTIONS.NEXT_STAGE});
         // TODO: Validate all characters/English
         
@@ -48,7 +48,7 @@ export const AddZhEn = () => {
             <form className={AddZhEnCSS.form} onSubmit={handleSubmit}>
                <div className={AddZhEnCSS.inputContainer}>
                     <Input placeholder='中文' handleChange={handleChange} name='chinese' value={input.chinese} />
-                    <Input placeholder='English' handleChange={handleChange} name='meaning' value={input.meaning} />
+                    <Input placeholder='English' handleChange={handleChange} name='english' value={input.english} />
                </div>
                <button className={AddZhEnCSS.button}>Save</button>
            </form>
