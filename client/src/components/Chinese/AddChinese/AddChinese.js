@@ -5,6 +5,7 @@ import AddZhEn from './AddZhEn/AddZhEn';
 import AddReadings from './AddReadings/AddReadings';
 import AddTones from './AddTones/AddTones';
 import Review from './Review/Review';
+import StageBar from './StageBar/StageBar';
 import { useLocation } from 'react-router-dom';
 
 export const AddChineseContext = createContext();
@@ -29,6 +30,7 @@ export const CHINESE_ACTIONS = {
     SET_PINYIN: 'SET_PINYIN',
     NEXT_STAGE: 'NEXT_STAGE',
     PREV_STAGE: 'PREV_STAGE',
+    SET_STAGE: 'SET_STAGE',
     RESET: 'RESET',
     SET_TONES_AND_PINYIN: 'SET_TONES_AND_PINYIN'
 }
@@ -51,6 +53,8 @@ const reducer = (state, action) => {
             return nextStage(state);
         case CHINESE_ACTIONS.PREV_STAGE:
             return {...state, stage: state.stage - 1};
+        case CHINESE_ACTIONS.SET_STAGE:
+            return {...state, stage: action.payload}
         case CHINESE_ACTIONS.RESET:
             return {...initialState};
         case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
@@ -136,12 +140,13 @@ export const AddChinese = ({user}) => {
     return (
         <AddChineseContext.Provider value={{state: state, dispatch: dispatch}}>
             <div className={AddChineseCSS.container}>
-                {stage > 1 &&
+                {/* {stage > 1 &&
                     (<div className={AddChineseCSS.buttonContainer}>
                         <button onClick={() => dispatch({type: CHINESE_ACTIONS.PREV_STAGE})}>Back</button>
                         <button onClick={() => dispatch({type: CHINESE_ACTIONS.NEXT_STAGE})}>Next</button>
                     </div>)
-                }
+                } */}
+                <StageBar />
                 {generateComponentByStage(stage)}
             </div>
         </AddChineseContext.Provider>

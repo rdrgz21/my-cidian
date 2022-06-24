@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 5%;
+}
+.container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.button {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid black;
+    position: relative;
+    z-index: 100;
+}
+
+.activeButton {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid black;
+    background-color: fuchsia;
+    position: relative;
+    z-index: 10;
+    transition: background-color ease-in-out 0.2s;
+}
+.activeButton ~ span {
+    font-weight: bold;
+}
+.container button span {
+    position: absolute;
+    white-space: nowrap;
+    top: 200%;
+    transform: translate(-50%, -50%);
+}
+
+.container div:nth-child(-n+3):after {
+    content: '';
+    height: 0.5em;
+    background-color: grey;
+    position: absolute;
+    width: 31vw;
+    left: 50%;
+    top: 0.4em;
+}
