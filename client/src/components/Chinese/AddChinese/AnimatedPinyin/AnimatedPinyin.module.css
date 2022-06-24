@@ -1,14 +1,10 @@
 
 .container {
-    /* Need to make this whole thing work with variables so can be used in both Tone & Review stages */
-    /* Height should be 3x height of text, width?
-    /* height: 150px; */
-    /* width: 200px; */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-size: 5rem;
+    font-size: 7vh;
 }
 .container p {
     color: black;
