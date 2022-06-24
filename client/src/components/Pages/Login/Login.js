@@ -3,6 +3,7 @@ import LoginCSS from "./Login.module.css";
 import axios from 'axios';
 import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
+import { useHistory } from 'react-router-dom';
 
 const Login = ({setUser}) => {
 
@@ -14,6 +15,8 @@ const Login = ({setUser}) => {
     const [input, setInput] = useState(emptyInput);
 
     const [message, setMessage] = useState('');
+
+    const history = useHistory();
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -40,11 +43,13 @@ const Login = ({setUser}) => {
             });
             console.log(res.data);
             setMessage(res.data.message);
-            setUser(res.data.username);
+            setInput(emptyInput);
+            if (res.data.username) {
+              setUser(res.data.username);
+              return history.push('/');
+            }
         } catch (error) {
             console.error(error);
-        } finally {
-            setInput(emptyInput);
         }
 
     };

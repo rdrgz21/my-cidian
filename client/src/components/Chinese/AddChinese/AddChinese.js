@@ -64,7 +64,7 @@ const nextStage = (state) => {
     }
 };
 
-export const AddChinese = () => {
+export const AddChinese = ({user}) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -83,8 +83,11 @@ export const AddChinese = () => {
             characters: characters,
             pinyin: pinyin,
             tones: tones,
-            english: english
+            english: english,
+            user: user
         };
+
+        console.log(newVocab);
         
         const response = await axios.post('/api/vocab/zh', newVocab, {
             header: {
