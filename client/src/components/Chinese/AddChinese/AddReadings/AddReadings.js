@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import AddReadingsCSS from "./AddReadings.module.css";
 import AddSingleReading from '../AddSingleReading/AddSingleReading';
 import StageBullets from '../StageBullets/StageBullets';
+import { AddChineseContext } from '../AddChinese';
 
-export const AddReadings = props => {
+export const AddReadings = () => {
 
-    const {savedCharacters, savedReadings, setReadings, nextStage} = props;
+    const {state} = useContext(AddChineseContext);
+
+    const {characters} = state;
 
     const [editingCharacter, setEditingCharacter] = useState(0);
 
@@ -15,8 +18,8 @@ export const AddReadings = props => {
 
     return (
         <div className={AddReadingsCSS.container}>
-            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleReading savedCharacter={savedCharacters[index]} savedReadings={savedReadings} setReadings={setReadings} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} editingCharacter={editingCharacter} index={index} key={index} />))}
-            <StageBullets savedCharacters={savedCharacters} editingCharacter={editingCharacter} />
+            {characters.map((character, index) => index === editingCharacter && (<AddSingleReading nextCharacter={nextCharacter} previousCharacter={previousCharacter} index={index} key={index} />))}
+            <StageBullets editingCharacter={editingCharacter} />
        </div>
     )
 };

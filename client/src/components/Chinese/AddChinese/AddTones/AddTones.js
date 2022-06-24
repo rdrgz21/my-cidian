@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import AddSingleTone from '../AddSingleTone/AddSingleTone';
 import AddTonesCSS from "./AddTones.module.css";
 import StageBullets from '../StageBullets/StageBullets';
+import { AddChineseContext, CHINESE_ACTIONS } from '../AddChinese';
 
-export const AddTones = props => {
+export const AddTones = () => {
 
-    const {savedCharacters, savedTones, savedReadings, setTones, savedPinyin, setPinyin, nextStage} = props;
+    const {state, dispatch} = useContext(AddChineseContext);
 
-    // TODO: FIX -Something about way the AddSingleTone is being rendered with functions defined here is causing this component to be rerendered unnecessarily
+    const {characters, readings} = state;
 
     const [editingCharacter, setEditingCharacter] = useState(0);
 
@@ -15,14 +16,12 @@ export const AddTones = props => {
 
     const previousCharacter = () => setEditingCharacter(editingCharacter - 1);
 
-    useEffect(()=>setPinyin(savedReadings), []);
-
-    console.log('Hello from add tone');
+    useEffect(() => dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: readings}), [readings, dispatch]);
 
     return (
         <div className={AddTonesCSS.container}>
-            {savedCharacters.map((character, index)=> index === editingCharacter && (<AddSingleTone savedCharacter={savedCharacters[index]} savedReadings={savedReadings} savedTones={savedTones} setTones={setTones} savedPinyin={savedPinyin} setPinyin={setPinyin} nextCharacter={nextCharacter} previousCharacter={previousCharacter} nextStage={nextStage} editingCharacter={editingCharacter} index={index} key={index} />))}
-            <StageBullets savedCharacters={savedCharacters} editingCharacter={editingCharacter} />
+            {characters.map((character, index) => index === editingCharacter && (<AddSingleTone nextCharacter={nextCharacter} previousCharacter={previousCharacter} index={index} key={index} />))}
+            <StageBullets editingCharacter={editingCharacter} />
        </div>
     )
 };
