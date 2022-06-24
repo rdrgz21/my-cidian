@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Tango from './Tango';
-import Cihui from './Chinese/Cihui';
+import Tango from '../Japanese/Tango';
+import Cihui from '../Chinese/Cihui';
 import VocabCSS from "./Vocab.module.css";
 
 export const Vocab = ({lang}) => {
