@@ -5,5 +5,13 @@
     align-items: center;
     height: calc(100% - 20px);
     width: 100%;
-    border: 2px solid blue;
+}
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+}
+.message {
+    height: 2em;
+    padding: 2em;
+    text-align: center;
 }

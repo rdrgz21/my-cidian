@@ -3,6 +3,7 @@ import ReviewCSS from "./Review.module.css";
 
 import ReviewWord from './ReviewWord';
 import { AddChineseContext } from '../AddChinese';
+import StyledButton from '../../../General/StyledButton/StyledButton';
 
 export const Review = props => {
 
@@ -16,7 +17,7 @@ export const Review = props => {
 
     // Unsure how this is working with useCallback, but seemed to fix issue with useEffect re: missing dependency
     const setAnimationPlayedTrue = useCallback(() => {
-        setTimeout(() => setAnimationPlayed(true), characters.length * 700);
+        setTimeout(() => setAnimationPlayed(true), 500 + (characters.length * 700));
     }, [characters.length]);
 
     const resetAnimation = () => {
@@ -26,15 +27,17 @@ export const Review = props => {
     useEffect(() => {
         setAnimationPlayedTrue();
         
-        return setMessage('');
+        return setMessage(' ');
     }, [setAnimationPlayedTrue, setMessage]);
 
     return (
         <div className={ReviewCSS.container}>
             <ReviewWord animationPlayed={animationPlayed} wordData={state} />
-            <button onClick={resetAnimation}>Replay</button>
-            <button onClick={handleSubmit}>Save</button>
-            <p>{message}</p>
+            <div className={ReviewCSS.buttonContainer}>
+                <StyledButton onClick={resetAnimation}>Replay</StyledButton>
+                <StyledButton onClick={handleSubmit}>Save</StyledButton>
+            </div>
+            <p className={ReviewCSS.message}>{message}</p>
        </div>
     )
 };

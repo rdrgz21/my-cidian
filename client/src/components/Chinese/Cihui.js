@@ -5,15 +5,26 @@ import ReviewWord from './AddChinese/Review/ReviewWord';
 const Cihui = props => {
 
     const [isClicked, setIsClicked] = useState(false);
+    const [isReviewWordUnmounting, setIsReviewWordUnmounting] = useState(false);
+
+    const openCloseReviewWord = () => {
+        if (isClicked) {
+            setIsReviewWordUnmounting(true);
+            setTimeout(() => {
+                setIsClicked(false);
+                setIsReviewWordUnmounting(false)
+            }, 500);
+        } else {
+            setIsClicked(true)
+        }
+    }
 
     const {zh} = props;
 
-    console.log(props);
-
     return (
-        <div onClick={() => setIsClicked(prev => !prev)} className={CihuiCSS.container}>
+        <div onClick={() => openCloseReviewWord()} className={CihuiCSS.container}>
             <p>{zh}</p>
-            {isClicked && <div className={CihuiCSS.reviewWordContainer}><ReviewWord wordData={props} animationPlayed={false} /></div>}
+            {isClicked && <div className={`${CihuiCSS.reviewWordContainer} ${isReviewWordUnmounting ? CihuiCSS.unmounting : null}`}><ReviewWord wordData={props} animationPlayed={false} /></div>}
         </div>
     )
 }
