@@ -14,6 +14,7 @@
 }
 .buttonContainer {
     display: flex;
+    font-size: 1rem;
 }
 
 @keyframes englishDown {

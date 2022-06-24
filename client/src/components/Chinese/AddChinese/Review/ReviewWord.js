@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import ReviewWordCSS from './ReviewWord.module.css';
 import IndivCharReview from '../IndivCharReview/IndivCharReview';
 import axios from 'axios';
+import StyledButton from '../../../General/StyledButton/StyledButton';
 
 const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord = false}) => {
     const history = useHistory();
@@ -56,8 +57,8 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
             <h2 className={ReviewWordCSS.english}>{english}</h2>
             {isSavedWord &&
                 <div className={ReviewWordCSS.buttonContainer}>
-                    <button onClick={(e) => editWord(e)}>Edit</button>
-                    <button onClick={(e) => deleteWord(e)}>Delete</button>
+                    <StyledButton onClick={(e) => editWord(e)}>Edit</StyledButton>
+                    <StyledButton onClick={(e) => deleteWord(e)}>Delete</StyledButton>
                 </div>
             }
             
