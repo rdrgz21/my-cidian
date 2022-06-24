@@ -5,6 +5,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    /* Add grid here with section for AnimatedPinyin, another for TonePad, and smaller one for button */
 }
 .container {
     position: relative;
