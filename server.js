@@ -46,6 +46,17 @@ app.get('/api/vocab/ja', async (req, res) => {
     }
 });
 
+app.get('/api/vocab/zh', async (req, res) => {
+    try {
+        const foundWords = await ChineseWord.find();
+        res.json({
+            foundWords
+        })
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 // ADD JAPANESE WORD
 
 app.post('/api/vocab/ja', async (req, res) => {

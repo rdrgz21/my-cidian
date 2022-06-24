@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Vocab from "./components/Vocab";
@@ -9,12 +9,17 @@ import AddSentence from "./components/AddSentence";
 import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 
 function App() {
+  const [studyLang, setStudyLang] = useState('zh');
+
+  // const isStudyingJapanese = studyLang === 'ja';
+  // const isStudyChinese = studyLang === 'zh';
+
   return (
       <Router>
-        <Navbar />
+        <Navbar studyLang={studyLang} setStudyLang={setStudyLang} />
         <div className="appContainer">
           <Switch>
-            <Route exact path="/" component={Vocab} />
+            <Route exact path="/" render={() => <Vocab lang={studyLang} />} />
             <Route exact path="/addvocab" component={AddVocab} />
             <Route exact path="/sentences" component={SentencesPage} />
             <Route exact path="/addsentence" component={AddSentence} />
