@@ -35,7 +35,11 @@ export const Review = props => {
             <ReviewWord animationPlayed={animationPlayed} wordData={state} />
             <div className={ReviewCSS.buttonContainer}>
                 <StyledButton onClick={resetAnimation}>Replay</StyledButton>
-                <StyledButton onClick={handleSubmit}>Save</StyledButton>
+                {message === "New vocab added" 
+                    ? <StyledButton onClick={handleSubmit}>Add New Vocab</StyledButton>
+                    : <StyledButton onClick={handleSubmit}>Save</StyledButton>
+                }
+                
             </div>
             <p className={ReviewCSS.message}>{message}</p>
        </div>
