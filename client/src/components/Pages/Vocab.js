@@ -50,6 +50,7 @@ export const Vocab = ({user}) => {
                 english={cihui.english}
                 pinyin={cihui.pinyin}
                 tones={cihui.tones}
+                getVocab={getVocab}
             />
         )
     };

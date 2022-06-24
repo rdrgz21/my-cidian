@@ -7,6 +7,8 @@ const Cihui = props => {
     const [isClicked, setIsClicked] = useState(false);
     const [isReviewWordUnmounting, setIsReviewWordUnmounting] = useState(false);
 
+    const {zh, getVocab} = props;
+
     const openCloseReviewWord = () => {
         if (isClicked) {
             setIsReviewWordUnmounting(true);
@@ -17,14 +19,13 @@ const Cihui = props => {
         } else {
             setIsClicked(true)
         }
+        getVocab();
     }
 
-    const {zh} = props;
-
     return (
-        <div onClick={() => openCloseReviewWord()} className={CihuiCSS.container}>
+        <div onClick={(e) => openCloseReviewWord(e)} className={CihuiCSS.container}>
             <p className={CihuiCSS.text}>{zh}</p>
-            {isClicked && <div className={`${CihuiCSS.reviewWordContainer} ${isReviewWordUnmounting ? CihuiCSS.unmounting : null}`}><ReviewWord wordData={props} animationPlayed={false} /></div>}
+            {isClicked && <div className={`${CihuiCSS.reviewWordContainer} ${isReviewWordUnmounting ? CihuiCSS.unmounting : null}`}><ReviewWord wordData={props} animationPlayed={false} isSavedWord={true} openCloseReviewWord={openCloseReviewWord} /></div>}
         </div>
     )
 }

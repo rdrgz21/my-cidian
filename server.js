@@ -255,6 +255,22 @@ app.post('/api/vocab/zh', async (req, res) => {
     }   
 });
 
+// DELETE CHINESE WORD
+
+app.delete('/api/vocab/zh/:id', async (req, res) => {
+    const id = req.params.id;
+    console.log(req);
+    try {
+        await ChineseWord.findByIdAndDelete({_id: id});
+        console.log('Attempting to delete vocab');
+        res.json({
+            message:'Vocab deleted'
+        })
+    } catch (error) {
+        console.log(error);
+    } 
+})
+
 // VOCAB - Delete & edit
 
 app.delete('/api/deletevocab/:id', async (req, res) => {
@@ -426,6 +442,6 @@ app.get('/', (req, res) => {
 });
 
 // Specifying port to run on. React runs on 3000 by default, so choose other to avoid conflict.
-app.listen( 5000, () => {
-    console.log('Server is running on port 5000');
+app.listen( 4999, () => {
+    console.log('Server is running on port 4999');
 });
