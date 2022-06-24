@@ -18,6 +18,7 @@ const initialState = {
     tones: [],
     pinyin: [],
     stage: 1,
+    stageReached: 1,
     isEditing: false
 }
 
@@ -67,7 +68,7 @@ const reducer = (state, action) => {
 
 const nextStage = (state) => {
     if (state.stage < 4) {
-        return {...state, stage: state.stage+1}
+        return {...state, stage: state.stage+1, stageReached: state.stageReached === state.stage ? state.stageReached + 1 : state.stageReached}
     } else {
         return initialState;
     }
