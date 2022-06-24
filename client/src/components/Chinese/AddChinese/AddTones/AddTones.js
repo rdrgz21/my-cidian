@@ -1,14 +1,14 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import AddSingleTone from '../AddSingleTone/AddSingleTone';
 import AddTonesCSS from "./AddTones.module.css";
 import StageBullets from '../StageBullets/StageBullets';
-import { AddChineseContext, CHINESE_ACTIONS } from '../AddChinese';
+import { AddChineseContext} from '../AddChinese';
 
 export const AddTones = () => {
 
-    const {state, dispatch} = useContext(AddChineseContext);
+    const {state} = useContext(AddChineseContext);
 
-    const {characters, readings, isEditing} = state;
+    const {characters} = state;
 
     const [editingCharacter, setEditingCharacter] = useState(0);
 
@@ -16,11 +16,6 @@ export const AddTones = () => {
 
     const previousCharacter = () => setEditingCharacter(editingCharacter - 1);
 
-    useEffect(() => {
-        if (!isEditing) {
-            dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: readings})
-        }
-    }, [isEditing, readings, dispatch]);
     
     return (
         <div className={AddTonesCSS.container}>
