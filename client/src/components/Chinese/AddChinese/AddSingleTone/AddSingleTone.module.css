@@ -1,26 +1,30 @@
-.singleToneEdit {
-    height: 100%;
+.grid {
+    height: calc(100% - 5vh);
     width: 100%;
+    display: grid;
+    gap: 0.5rem;
+    grid-auto-rows: 1fr 4fr 1fr;
+}
+.middleRow {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-
-    /* Add grid here with section for AnimatedPinyin, another for TonePad, and smaller one for button */
 }
-.container {
+.tonePadContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min(calc(100vw - 20px), 100%);
+    aspect-ratio: 1 / 1;
     position: relative;
-    padding-bottom: 10px;
-    width: 100%;
-    height: 100vw;
 }
-.singleToneEdit h1 {
+.tonePadContainer h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 90vw;
-    height: 100vw;
+    height: 100%;
     width: 100%;
+    font-size: clamp(1px, 85vw, 450px);
     position: absolute;
 }
 .singleToneEdit h2 {
@@ -28,16 +32,16 @@
 }
 .nextButtonContainer {
     padding: 10px;
-    position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 .crossContainer {
+    position: relative;
+    border: 2px solid grey;
     width: 100%;
-    height: 100vw;
-    top: 0;
-    position: absolute;
-    z-index: 0;
-    border: 2px solid grey
+    height: 100%;
 }
 .verticalLine {
     position: absolute;

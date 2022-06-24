@@ -48,15 +48,17 @@ export const AddSingleTone = props => {
     }
 
     return (
-        <div className={AddSingleToneCSS.singleToneEdit}>
+        <div className={AddSingleToneCSS.grid}>
             <AnimatedPinyin animationPlayed={false} pinyin={pinyin[index]} tone={parseInt(tones[index])} pinyinStyles={null} pinyinDelay={null} />
-            <div className={AddSingleToneCSS.container}>
-                <div className={AddSingleToneCSS.crossContainer}>
-                    <div className={AddSingleToneCSS.horizontalLine} />
-                    <div className={AddSingleToneCSS.verticalLine} />
+            <div className={AddSingleToneCSS.middleRow}>
+                <div className={AddSingleToneCSS.tonePadContainer}>
+                    <div className={AddSingleToneCSS.crossContainer}>
+                        <div className={AddSingleToneCSS.horizontalLine} />
+                        <div className={AddSingleToneCSS.verticalLine} />
+                    </div>
+                    <h1>{characters[index]}</h1>
+                    <TonePad handleToneClick={handleToneClick} savedTone={parseInt(tones[index])} />
                 </div>
-                <h1>{characters[index]}</h1>
-                <TonePad handleToneClick={handleToneClick} savedTone={parseInt(tones[index])} />
             </div>
             <div className={AddSingleToneCSS.nextButtonContainer}>
                 {index > 0 && <StyledButton onClick={previousCharacter}>Back</StyledButton>}

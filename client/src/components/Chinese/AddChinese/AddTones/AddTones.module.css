@@ -3,7 +3,6 @@
     height: calc(95% - 20px);
     flex-direction: column;
     align-items: center;
-    border: 5px solid blue;
 
    /* Add grid here with large section for AddSingleTone component and smaller for StageBullets */
 }
