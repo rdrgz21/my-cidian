@@ -220,6 +220,7 @@ app.post('/api/vocab/zh', async (req, res) => {
 
     const chinese = req.body.chinese;
     const characters = req.body.characters;
+    const readings = req.body.readings;
     const pinyin = req.body.pinyin;
     const tones = req.body.tones;
     const english = req.body.english;
@@ -237,6 +238,7 @@ app.post('/api/vocab/zh', async (req, res) => {
                 {
                     chinese,
                     characters,
+                    readings,
                     pinyin,
                     tones,
                     english,
@@ -270,6 +272,21 @@ app.delete('/api/vocab/zh/:id', async (req, res) => {
         console.log(error);
     } 
 })
+
+// UPDATE CHINESE WORD
+
+app.patch('/api/vocab/zh/:id', async(req, res) => {
+    const id = req.params.id;
+    try {
+        await ChineseWord.findByIdAndUpdate(id, req.body);
+        console.log('Attempting to update vocab');
+        res.json({
+            message:'Vocab updated'
+        })
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 // VOCAB - Delete & edit
 

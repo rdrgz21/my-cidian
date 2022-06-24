@@ -53,6 +53,8 @@ function App() {
             
             {user && <Route exact path="/addvocab" render={() => <AddChinese user={user} />} />}
 
+            {user && <Route exact path="/editvocab" render={() => <AddChinese user={user} />} />}
+
             {/* <Route exact path="/sentences" component={SentencesPage} />
             <Route exact path="/addsentence" component={AddSentence} /> */}
           </Switch>

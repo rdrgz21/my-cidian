@@ -5,6 +5,7 @@ import AddZhEn from './AddZhEn/AddZhEn';
 import AddReadings from './AddReadings/AddReadings';
 import AddTones from './AddTones/AddTones';
 import Review from './Review/Review';
+import { useLocation } from 'react-router-dom';
 
 export const AddChineseContext = createContext();
 
@@ -15,7 +16,8 @@ const initialState = {
     readings: [],
     tones: [],
     pinyin: [],
-    stage: 1
+    stage: 1,
+    isEditing: false
 }
 
 export const CHINESE_ACTIONS = {
@@ -65,11 +67,12 @@ const nextStage = (state) => {
 };
 
 export const AddChinese = ({user}) => {
+    const location = useLocation();
+    const editWordState = location.state?.wordToEdit;
 
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, editWordState ? editWordState : initialState);
 
-    const {chinese, characters, pinyin, tones, english, stage} = state;
-
+    const {chinese, characters, readings, pinyin, tones, english, stage, isEditing, id} = state;
 
     // Send to DB
 
@@ -81,21 +84,30 @@ export const AddChinese = ({user}) => {
         const newVocab = {
             chinese: chinese,
             characters: characters,
+            readings: readings,
             pinyin: pinyin,
             tones: tones,
             english: english,
             user: user
         };
 
-        console.log(newVocab);
-        
-        const response = await axios.post('/api/vocab/zh', newVocab, {
-            header: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        setMessage(response.data.message);
+        if (isEditing) {
+            const response = await axios.patch(`/api/vocab/zh/${id}`, newVocab, {
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            setMessage(response.data.message);
+        } else {
+            const response = await axios.post('/api/vocab/zh', newVocab, {
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            setMessage(response.data.message);
+        }
     };
 
     const generateComponentByStage = stage => {

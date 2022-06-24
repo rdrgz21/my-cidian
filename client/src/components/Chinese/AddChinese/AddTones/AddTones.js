@@ -8,7 +8,7 @@ export const AddTones = () => {
 
     const {state, dispatch} = useContext(AddChineseContext);
 
-    const {characters, readings} = state;
+    const {characters, readings, isEditing} = state;
 
     const [editingCharacter, setEditingCharacter] = useState(0);
 
@@ -16,8 +16,12 @@ export const AddTones = () => {
 
     const previousCharacter = () => setEditingCharacter(editingCharacter - 1);
 
-    useEffect(() => dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: readings}), [readings, dispatch]);
-
+    useEffect(() => {
+        if (!isEditing) {
+            dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: readings})
+        }
+    }, [isEditing, readings, dispatch]);
+    
     return (
         <div className={AddTonesCSS.container}>
             {characters.map((character, index) => index === editingCharacter && (<AddSingleTone nextCharacter={nextCharacter} previousCharacter={previousCharacter} index={index} key={index} />))}
