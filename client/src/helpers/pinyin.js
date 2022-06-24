@@ -11,6 +11,8 @@ export const pinyin = {
     }
 };
 
+export const validPinyinRegex = /(zh|ch|sh|b|p|m|f|d|t|n|z|c|s|l|r|j|q|x|g|k|h|y|w|){1}(iang|iong|uang|ang|eng|ong|iao|ian|ing|uai|uan|ai|ei|ao|ou|an|en|er|ia|ie|iu|in|ua|uo|ui|un|ue|üe|a|e|i|o|u|ü){1}$/
+
 const tonedVowels = {
     'a': ['a', 'ā', 'á', 'ǎ', 'à'],
     'e': ['e','ē','é','ě','è'],
@@ -24,7 +26,7 @@ const getTonedVowel = (vowel, tone) => {
     return tonedVowels[vowel][tone];
 };
 
-const getFinal = string => {
+export const getFinal = string => {
     const lastFourChars = string.substr(string.length - 4);
     const lastThreeChars = string.substr(string.length - 3);
     const lastTwoChars = string.substr(string.length - 2);
@@ -40,6 +42,7 @@ const getFinal = string => {
         return lastChar;
     } else {
         console.error('No valid final found');
+        return null;
     }
 };
 
@@ -52,37 +55,37 @@ const getVowels = final => {
     return vowels;
 };
 
-const getUntonedVowel = final => {
+export const getUntonedVowel = final => {
     const vowels = getVowels(final);
-    const noOfVowels = vowels.length;
 
-    if (noOfVowels === 0 || noOfVowels > 3) {
-        console.log('Too few/many vowels');
-    } else if (noOfVowels === 1) {
-        return vowels[0];
-    } else if (noOfVowels > 1) {
-        if (final.includes('a')){
-            return 'a';
-        } else if (final.includes('e')){
-            return 'e';
-        } else if (final.includes('ou')){
-            return 'o';
-        } else {
-            return vowels[1];
-        }
-    } else {
-        console.error('There was an error identifying the vowel to mark with tone');
-    }
+    if (vowels.length === 1) return vowels[0];
+    
+    if (final.includes('a')) return 'a';
+    if (final.includes('e')) return 'e';
+    if (final.includes('ou')) return 'o';
+    return vowels[1];
 };
 
 export const applyTone = (string, tone) => {
     const final = getFinal(string);
+
+    if (!final) {
+        console.log('No valid final found');
+        return null;
+    }
+
     const untonedVowel = getUntonedVowel(final);
     const tonedVowel = getTonedVowel(untonedVowel, tone);
     const tonedString = string.replace(untonedVowel, tonedVowel);
 
     return tonedString;
   };
+
+export const removePunctuationFromChinese = (string) => {
+    const punctuationRegex = /[，。！]/g;
+    const newString = string.replace(punctuationRegex, '').split('');
+    return newString;
+};
 
 // Algorithm for correct diacritic placement
 // If final contains a/e, it will take tone mark
