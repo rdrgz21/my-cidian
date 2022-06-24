@@ -26,7 +26,7 @@ export const AddSingleReading = props => {
 
     const handleChange = event => {
         setMessage('');
-        setInput(event.target.value);
+        setInput(event.target.value.toLowerCase());
     }
 
     const handleClick = event => {
