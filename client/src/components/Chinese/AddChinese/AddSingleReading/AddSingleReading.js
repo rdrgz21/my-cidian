@@ -38,6 +38,7 @@ export const AddSingleReading = props => {
         }
         constructReadings();
         nextCharacter();
+        
         if (index === readings.length - 1) {
             dispatch({type: CHINESE_ACTIONS.NEXT_STAGE});
         }

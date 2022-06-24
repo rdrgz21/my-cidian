@@ -6,15 +6,11 @@ export const StageBar = props => {
 
     const {state, dispatch} = useContext(AddChineseContext);
 
-    const {stage, readings, pinyin, characters} = state;
+    const {stage, stageReached} = state;
 
     const handleClick = e => {
         dispatch({type: CHINESE_ACTIONS.SET_STAGE, payload: parseInt(e.target.value)});
     }
-
-    const readingsAvailable = readings.length > 0;
-    const tonesAvailable = pinyin.length > 0;
-    const reviewAvailable = characters.length > 0 && readingsAvailable && tonesAvailable;
 
     return (
         <div className={StageBarCSS.container}>
@@ -28,27 +24,27 @@ export const StageBar = props => {
             <div>
                 <button 
                     className={stage === 2 ? StageBarCSS.activeButton : StageBarCSS.button} 
-                    style={!readingsAvailable ? {backgroundColor: 'grey'} : {}} 
+                    style={stageReached < 2 ? {backgroundColor: 'grey'} : {}} 
                     onClick={handleClick} 
-                    disabled={!readingsAvailable}
+                    disabled={stageReached < 2}
                     value={2}></button>
                 <span>拼音</span>
             </div>
             <div>
                 <button 
                     className={stage === 3 ? StageBarCSS.activeButton : StageBarCSS.button} 
-                    style={!tonesAvailable ? {backgroundColor: 'grey'} : {}} 
+                    style={stageReached < 3 ? {backgroundColor: 'grey'} : {}} 
                     onClick={handleClick} 
-                    disabled={!tonesAvailable}
+                    disabled={stageReached < 3}
                     value={3}></button>
                 <span>声调</span>
             </div>
             <div>
                 <button 
                     className={stage === 4 ? StageBarCSS.activeButton : StageBarCSS.button} 
-                    style={!reviewAvailable ? {backgroundColor: 'grey'} : {}} 
+                    style={stageReached < 4 ? {backgroundColor: 'grey'} : {}} 
                     onClick={handleClick} 
-                    disabled={!reviewAvailable}
+                    disabled={stageReached < 4}
                     value={4}></button>
                 <span>复习</span>
             </div>

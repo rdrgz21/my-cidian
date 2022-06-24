@@ -36,6 +36,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
             tones: tones,
             pinyin: pinyin,
             stage: 1,
+            stageReached: 4,
             isEditing: true
     }
 
