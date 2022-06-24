@@ -113,14 +113,14 @@ export const AddChinese = () => {
     return (
         <AddChineseContext.Provider value={{state: state, dispatch: dispatch}}>
             <div className={AddChineseCSS.container}>
-            {stage > 1 &&
-                (<div className={AddChineseCSS.buttonContainer}>
-                    <button onClick={() => dispatch({type: CHINESE_ACTIONS.PREV_STAGE})}>Back</button>
-                    <button onClick={() => dispatch({type: CHINESE_ACTIONS.NEXT_STAGE})}>Next</button>
-                </div>)
-            }
-            {generateComponentByStage(stage)}
-       </div>
+                {stage > 1 &&
+                    (<div className={AddChineseCSS.buttonContainer}>
+                        <button onClick={() => dispatch({type: CHINESE_ACTIONS.PREV_STAGE})}>Back</button>
+                        <button onClick={() => dispatch({type: CHINESE_ACTIONS.NEXT_STAGE})}>Next</button>
+                    </div>)
+                }
+                {generateComponentByStage(stage)}
+            </div>
         </AddChineseContext.Provider>
     )
 };

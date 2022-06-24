@@ -23,7 +23,7 @@ const Cihui = props => {
 
     return (
         <div onClick={() => openCloseReviewWord()} className={CihuiCSS.container}>
-            <p>{zh}</p>
+            <p className={CihuiCSS.text}>{zh}</p>
             {isClicked && <div className={`${CihuiCSS.reviewWordContainer} ${isReviewWordUnmounting ? CihuiCSS.unmounting : null}`}><ReviewWord wordData={props} animationPlayed={false} /></div>}
         </div>
     )
