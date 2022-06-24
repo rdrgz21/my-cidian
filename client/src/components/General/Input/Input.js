@@ -1,7 +1,7 @@
 import React from 'react';
 import InputCSS from './Input.module.css';
 
-const Input = ({placeholder, handleChange, name, value}) => {
+const Input = ({placeholder, handleChange, name, value, isInputValid}) => {
 
     // Problems
     // 1. Adjusts font size for all input components visible on page
@@ -24,7 +24,16 @@ const Input = ({placeholder, handleChange, name, value}) => {
 
     return (
         <label className={InputCSS.customField}>
-            <input className={InputCSS.input} id='inputField' type='text' onChange={handleChange} name={name} value={value} autoComplete='off' required/>
+            <input 
+                className={`${InputCSS.input} ${isInputValid === false && value.length > 0 && InputCSS.inputInvalid}`}
+                id='inputField' 
+                type='text' 
+                onChange={handleChange} 
+                name={name} 
+                value={value}
+                autoComplete='off' 
+                required
+                />
             <span className={InputCSS.placeholder}>
                 <p>
                     {placeholder}
