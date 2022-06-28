@@ -99,7 +99,7 @@ export const AddChinese = ({user}) => {
             user: user
         };
 
-        if (message === 'New vocab added') {
+        if (message === 'New vocab added' || message === "Sorry, you've already saved this word!") {
             setMessage(' ');
             dispatch({type: CHINESE_ACTIONS.RESET});
         }
