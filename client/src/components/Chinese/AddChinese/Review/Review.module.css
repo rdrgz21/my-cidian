@@ -5,8 +5,6 @@
     align-items: center;
     height: calc(95% - 20px);
     width: 100%;
-    
-    /* Add grid */
 }
 .buttonContainer {
     display: flex;

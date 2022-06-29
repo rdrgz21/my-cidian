@@ -16,7 +16,6 @@ export const AddTones = () => {
 
     const previousCharacter = () => setEditingCharacter(editingCharacter - 1);
 
-    
     return (
         <div className={AddTonesCSS.container}>
             {characters.map((character, index) => index === editingCharacter && (<AddSingleTone nextCharacter={nextCharacter} previousCharacter={previousCharacter} index={index} key={index} />))}

@@ -49,7 +49,7 @@ export const AddSingleTone = props => {
 
     return (
         <div className={AddSingleToneCSS.grid}>
-            <AnimatedPinyin animationPlayed={false} pinyin={pinyin[index]} tone={parseInt(tones[index])} pinyinStyles={null} pinyinDelay={null} />
+            <span className={AddSingleToneCSS.pinyin}><AnimatedPinyin animationPlayed={false} pinyin={pinyin[index]} tone={parseInt(tones[index])} pinyinStyles={null} pinyinDelay={null} /></span>
             <div className={AddSingleToneCSS.middleRow}>
                 <div className={AddSingleToneCSS.tonePadContainer}>
                     <div className={AddSingleToneCSS.crossContainer}>

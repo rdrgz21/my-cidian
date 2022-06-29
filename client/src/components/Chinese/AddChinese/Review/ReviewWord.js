@@ -11,7 +11,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
     const {id, characters, readings, pinyin, english, tones, zh} = wordData;
     
     const showIndivCharReview = () => {
-        return characters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyin[index]} tone={tones[index]} wordLength={characters.length} index={index} key={index} />))
+        return characters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyin[index]} tone={tones[index]} index={index} key={index} />))
     }
 
     const deleteWord = async (e) => {
@@ -50,9 +50,11 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
         })
     };
 
+    const charWidthStyles = {fontSize: `clamp(1px, ${50/characters.length}vw, 10vh`};
+
     return (
         <>
-            <div className={ReviewWordCSS.container}>
+            <div className={ReviewWordCSS.container} style={charWidthStyles}>
                 {showIndivCharReview()}
             </div>
             <h2 className={ReviewWordCSS.english}>{english}</h2>

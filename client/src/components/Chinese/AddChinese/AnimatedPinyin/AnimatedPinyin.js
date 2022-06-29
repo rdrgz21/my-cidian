@@ -3,7 +3,7 @@ import AnimatedPinyinCSS from "./AnimatedPinyin.module.css";
 
 export const AnimatedPinyin = props => {
 
-    const {pinyin, tone, pinyinStyles, pinyinDelay, animationPlayed} = props;
+    const {pinyin, tone, pinyinDelay, animationPlayed} = props;
 
     const getToneStyles = tone => {
         switch(parseInt(tone)) {
@@ -23,7 +23,7 @@ export const AnimatedPinyin = props => {
     }
 
     return (
-        <div className={AnimatedPinyinCSS.container} style={pinyinStyles}>
+        <div className={AnimatedPinyinCSS.container}>
             <span className={pinyinDelay && AnimatedPinyinCSS.toneWrapper}>
                 <p className={!animationPlayed ? getToneStyles(tone) : undefined} style={pinyinDelay}>{pinyin}</p>
             </span>

@@ -4,6 +4,12 @@
     display: grid;
     grid-auto-rows: 1fr 2fr 1fr;
 }
+.pinyin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7em;
+}
 .middleRow {
     display: flex;
     justify-content: center;
