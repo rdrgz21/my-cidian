@@ -50,7 +50,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
         })
     };
 
-    const charWidthStyles = {fontSize: `clamp(1px, ${50/characters.length}vw, 10vh`};
+    const charWidthStyles = {fontSize: `min(${50/characters.length}vw, 10vh`};
 
     return (
         <>

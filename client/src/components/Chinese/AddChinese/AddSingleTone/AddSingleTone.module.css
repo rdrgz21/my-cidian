@@ -29,7 +29,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    font-size: clamp(1px, 85vw, 35vh);
+    font-size: min(85vw, 35vh);
     position: absolute;
 }
 .singleToneEdit h2 {
