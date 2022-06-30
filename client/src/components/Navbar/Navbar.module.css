@@ -26,6 +26,14 @@ nav h3 {
     margin: 0 10px;
 }
 .navLinkActive {
-    text-decoration: underline;
     color: #008F5A;
+}
+.button {
+  border: none;
+  background: none;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 10px;
+  color: black;
 }
