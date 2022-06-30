@@ -82,7 +82,7 @@ export const applyTone = (string, tone) => {
   };
 
 export const removePunctuationFromChinese = (string) => {
-    const punctuationRegex = /[，。！]/g;
+    const punctuationRegex = /[，。！？]/g;
     const newString = string.replace(punctuationRegex, '').split('');
     return newString;
 };

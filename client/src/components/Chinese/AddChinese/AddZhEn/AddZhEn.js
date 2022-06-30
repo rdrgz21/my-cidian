@@ -25,7 +25,7 @@ export const AddZhEn = () => {
     const [message, setMessage] = useState('');
 
     const chineseRegex = /^[ ，。！？\u3000\u3400-\u4DBF\u4E00-\u9FFF]{0,}$/
-    const englishRegex = /^[A-Za-z0-9 _.,!"'/]{0,}$/
+    const englishRegex = /^[A-Za-z0-9 _.,!?"’'/]{0,}$/
 
     const {isValidInput: isChineseInputValid} = useInputValidation(chineseRegex, input.chinese);
     const {isValidInput: isEnglishInputValid} = useInputValidation(englishRegex, input.english);
