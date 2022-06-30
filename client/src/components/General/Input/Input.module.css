@@ -1,17 +1,16 @@
 .customField {
     position: relative;
     font-size: 7vh;
-    padding-top: 20px;
-    margin-bottom: 5px;
+    padding-top: 0.35em;
     width: 100%;
     text-align: center;
 }
 .input {
     width: 100%;
     box-sizing: border-box;
-    font-size: 15vw;
+    font-size: 1em;
     transition: border 0.2s ease;
-    padding: 5px;
+    padding: 0.1em;
     border: 5px solid transparent;
     text-align: center;
 }
@@ -20,7 +19,7 @@
     box-sizing: border-box;
     color: grey;
     position: absolute;
-    top: 25px;
+    top: 0.45em;
     left: 0;
     white-space: nowrap;
     transition: 
@@ -42,8 +41,8 @@
 
 .input:valid + .placeholder,
 .input:focus + .placeholder {
-    top: 12px;
-    font-size: 2vh;
+    top: 0.7em;
+    font-size: 0.3em;
 }
 
 .placeholder {
@@ -55,7 +54,7 @@
     color: orange;
     background-color: rgb(245, 245,245);
     width: fit-content;
-    padding: 0 5px;
+    padding: 0 0.5em;
 
 }
 .inputInvalid {

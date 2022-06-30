@@ -16,5 +16,8 @@
     justify-content: center;
 }
 .singleCharacterEdit h1 {
-    font-size: 25vw;
+    font-size: 25vh
+}
+.buttonContainer {
+    padding: 2em;
 }

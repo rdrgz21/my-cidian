@@ -9,6 +9,7 @@
 .buttonContainer {
     display: flex;
     justify-content: space-around;
+    margin: 2em;
 }
 .message {
     height: 2em;

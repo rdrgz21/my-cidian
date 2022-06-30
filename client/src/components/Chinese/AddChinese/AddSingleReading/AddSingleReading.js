@@ -26,7 +26,7 @@ export const AddSingleReading = props => {
 
     const handleChange = event => {
         setMessage('');
-        setInput(event.target.value.toLowerCase());
+        setInput(event.target.value.toLowerCase().trim());
     }
 
     const handleClick = event => {
@@ -49,7 +49,7 @@ export const AddSingleReading = props => {
             <h1>{characters[index]}</h1>
             <form>
                 <Input placeholder='Reading' handleChange={handleChange} name='reading' value={input} isInputValid={isValidInput} />
-                <div>
+                <div className={AddSingleReadingCSS.buttonContainer}>
                     {index > 0 && <StyledButton onClick={previousCharacter} type='button'>Back</StyledButton>}
                     <StyledButton onClick={handleClick} type='submit'>Next</StyledButton>
                 </div>

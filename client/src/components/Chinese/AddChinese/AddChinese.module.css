@@ -5,13 +5,13 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    align-items: center;
 }
 .buttonContainer {
     height: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid fuchsia; */
 }
 .vocabContainer {
     padding: 20px;
