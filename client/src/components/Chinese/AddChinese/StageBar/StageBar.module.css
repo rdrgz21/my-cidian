@@ -51,7 +51,13 @@
     height: 0.5em;
     background-color: rgb(250, 213, 165);
     position: absolute;
-    width: 31vw;
+    width: 31.5vw;
     left: 50%;
     top: 0.333em;
+}
+
+@media only screen and (min-width: 1450px) {
+    .container div:nth-child(-n+3):after {
+        width: 32vw;
+    }
 }
