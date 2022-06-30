@@ -9,7 +9,6 @@
 }
 
 .container {
-    border: 2px solid blue;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -17,17 +16,23 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     text-align: center;
     color: black;
-    width: 50vw;
-    height: 33vh;
+    width: clamp(15em, 50%, 20em);
+    padding: 2em;
+    /* height: 33vh; */
     z-index: 1000;
+}
+.buttonContainer {
+    display:flex;
+    margin: 1em 0 0;
 }
 .container button {
     width: 50%;
 }
 .container p {
     width: 100%;
+    font-size: 1.5em;
 }

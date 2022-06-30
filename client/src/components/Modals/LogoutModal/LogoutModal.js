@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useHistory } from 'react-router-dom';
+import StyledButton from '../../General/StyledButton/StyledButton';
 import LogoutModalCSS from './LogoutModal.module.css';
 
 const LogoutModal = ({setUser, setIsLogoutModalOpen}) => {
@@ -22,8 +23,8 @@ const LogoutModal = ({setUser, setIsLogoutModalOpen}) => {
            <div className={LogoutModalCSS.container}>
                 <p>Confirm logout</p>
                 <div className={LogoutModalCSS.buttonContainer}>
-                    <button onClick={() => logoutUser()}>Logout</button>
-                    <button onClick={() => setIsLogoutModalOpen(false)}>Cancel</button>
+                    <StyledButton onClick={() => logoutUser()}>Logout</StyledButton>
+                    <StyledButton onClick={() => setIsLogoutModalOpen(false)}>Cancel</StyledButton>
                 </div> 
             </div>
       </div>,
