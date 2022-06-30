@@ -61,8 +61,6 @@ const Login = ({setUser}) => {
 
     return (
         <div>
-            Login
-
             <p>{message}</p>
 
             <div className={LoginCSS.container}>

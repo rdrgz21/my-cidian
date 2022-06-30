@@ -2,7 +2,7 @@
     height: 5vh;
 }
 .editingBullet {
-    color: orange;
+    color: #008F5A;
 }
 .bullet, .editingBullet {
     font-size: 32px;

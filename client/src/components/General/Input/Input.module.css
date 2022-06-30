@@ -33,7 +33,7 @@
 
 }
 .input:focus, .input:valid {
-    border-color: orange;
+    border-color: #008F5A;
     outline: none;
     background-color: rgb(245, 245,245);
     transition-delay: 0.1s;
@@ -51,7 +51,7 @@
 
 .input:valid + .placeholder p,
 .input:focus + .placeholder p {
-    color: orange;
+    color: #008F5A;
     background-color: rgb(245, 245,245);
     width: fit-content;
     padding: 0 0.5em;

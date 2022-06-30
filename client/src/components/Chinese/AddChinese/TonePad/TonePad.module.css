@@ -27,20 +27,22 @@
     color: black;
 }
 .container button:nth-child(1) span {
-    top: 10px;
-    left: 10px;
+    /* top: 10px;
+    left: 10px; */
+    top: 0.25em;
+    left: 0.25em;
 }
 .container button:nth-child(2) span {
-    top: 10px;
-    right: 10px;
+    top: 0.25em;
+    right: 0.25em;
 }
 .container button:nth-child(3) span {
-    bottom: 10px;
-    left: 10px;
+    bottom: 0.25em;
+    left: 0.25em;
 }
 .container button:nth-child(4) span {
-    bottom: 10px;
-    right: 10px;
+    bottom: 0.25em;
+    right: 0.25em;
 }
 .container button:nth-child(1):active {
     border: solid crimson;

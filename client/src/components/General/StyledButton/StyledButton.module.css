@@ -10,7 +10,7 @@
     font-weight: 500;
 }
 .button:active {
-    border-color: orange;
+    border-color: #efdcff;
     background-color: grey;
-    color: orange;
+    color: #efdcff;
 }

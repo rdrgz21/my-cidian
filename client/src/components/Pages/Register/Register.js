@@ -61,8 +61,6 @@ const Register = () => {
 
     return (
         <div>
-            Register
-
             <p>{message}</p>
 
             <div className={RegisterCSS.container}>

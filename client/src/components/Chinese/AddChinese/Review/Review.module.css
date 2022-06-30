@@ -9,10 +9,10 @@
 .buttonContainer {
     display: flex;
     justify-content: space-around;
-    margin: 2em;
+    margin: 1em;
 }
 .message {
     height: 2em;
-    padding: 2em;
+    padding: 1em;
     text-align: center;
 }
