@@ -50,11 +50,11 @@ app.post('/api/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 8);
 
     // Add function to check if email already in use
-    const otherUser = await User.find({ email: email});
+    const otherUser = await User.find({ username: username });
     console.log(otherUser);
 
     if (otherUser.length > 0) {
-        res.send("Sorry, that email is already in use");
+        res.send("Sorry, that username is already in use");
     } else {
         await User.create(
             {
