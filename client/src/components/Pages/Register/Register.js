@@ -18,6 +18,7 @@ const Register = () => {
     const [message, setMessage] = useState('');
 
     const handleChange = (event) => {
+        setMessage('');
         const {name, value} = event.target;
 
         setInput(prevInput => {
@@ -54,9 +55,10 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (input.password !== input.confirmPassword) {
-            setMessage('Passwords to not match');
+            setMessage('Passwords do not match');
+        } else {
+            registerUser();
         }
-        registerUser();
     };
 
     return (
