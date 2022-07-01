@@ -61,20 +61,17 @@ const Register = () => {
 
     return (
         <div>
-            <p>{message}</p>
-
             <div className={RegisterCSS.container}>
-
                 <form className={RegisterCSS.form} onSubmit={handleSubmit}>
                     <div className={RegisterCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />
                             <Input placeholder='Email Address' handleChange={handleChange} name='email' value={input.email} />
                             <Input placeholder='Password' handleChange={handleChange} name='password' value={input.password} />
-                            <Input placeholder='Confirm Pw' handleChange={handleChange} name='confirmPassword' value={input.confirmPassword} />
+                            <Input placeholder='Confirm Password' handleChange={handleChange} name='confirmPassword' value={input.confirmPassword} />
                     </div>
                     <StyledButton>Register</StyledButton>
                 </form>
-
+                <p className={RegisterCSS.message}>{message}</p>
             </div>
         </div>
     )

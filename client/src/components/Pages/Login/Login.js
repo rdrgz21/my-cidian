@@ -61,10 +61,7 @@ const Login = ({setUser}) => {
 
     return (
         <div>
-            <p>{message}</p>
-
             <div className={LoginCSS.container}>
-
                 <form className={LoginCSS.form} onSubmit={handleSubmit}>
                     <div className={LoginCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />
@@ -72,7 +69,7 @@ const Login = ({setUser}) => {
                     </div>
                     <StyledButton>Login</StyledButton>
                 </form>
-
+                <p className={LoginCSS.message}>{message}</p>
             </div>
         </div>
     )
