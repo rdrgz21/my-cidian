@@ -5,14 +5,14 @@ import IndivCharReview from '../IndivCharReview/IndivCharReview';
 import axios from 'axios';
 import StyledButton from '../../../General/StyledButton/StyledButton';
 
+export const showIndivCharReview = (charactersArray, pinyinArray, tonesArray, animationPlayed) => {
+    return charactersArray.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyinArray[index]} tone={tonesArray[index]} index={index} key={index} />))
+}
+
 const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord = false}) => {
     const history = useHistory();
 
     const {id, characters, readings, pinyin, english, tones, zh} = wordData;
-    
-    const showIndivCharReview = () => {
-        return characters.map((character, index) => (<IndivCharReview animationPlayed={animationPlayed} savedCharacter={character} savedPinyin={pinyin[index]} tone={tones[index]} index={index} key={index} />))
-    }
 
     const deleteWord = async (e) => {
         console.log('Deleting word');
@@ -55,7 +55,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
     return (
         <>
             <div className={ReviewWordCSS.container} style={charWidthStyles}>
-                {showIndivCharReview()}
+                {showIndivCharReview(characters, pinyin, tones, animationPlayed)}
             </div>
             <h2 className={ReviewWordCSS.english}>{english}</h2>
             {isSavedWord &&
