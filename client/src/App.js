@@ -6,10 +6,10 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Pages/Register/Register";
 import Login from "./components/Pages/Login/Login";
-
 import Vocab from "./components/Pages/Vocab";
-import AddChinese from "./components/Chinese/AddChinese/AddChinese";
+import Home from './components/Pages/Home/Home';
 
+import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <div className="appContainer">
 
           <Switch>
-            <Route exact path="/" render={() => user ? <Vocab user={user} /> : <div>Home</div>} />
+            <Route exact path="/" render={() => user ? <Vocab user={user} /> : <Home />} />
 
             {!user && <Route exact path="/register" component={Register} />}
             {!user && <Route exact path="/login" render={() => <Login setUser={setUser} />} />}

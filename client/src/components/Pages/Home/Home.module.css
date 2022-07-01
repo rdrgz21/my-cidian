@@ -1,0 +1,26 @@
+.container {
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2em; 
+    align-content: center;
+    padding-top: 10%;
+}
+@media (min-width: 700px) {
+    .container {
+        width: 60%;
+    }
+}
+.hanzi {
+    display: inline-flex;
+    align-items: center;
+}
+.text {
+    padding-top: 1em;
+}
+.container p {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 2em;
+}
