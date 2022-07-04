@@ -1,7 +1,7 @@
 import React from 'react';
 import InputCSS from './Input.module.css';
 
-const Input = ({placeholder, handleChange, name, value, isInputValid}) => {
+const Input = ({placeholder, handleChange, name, value, isInputValid, isPassword}) => {
 
     // Problems
     // 1. Adjusts font size for all input components visible on page
@@ -27,7 +27,7 @@ const Input = ({placeholder, handleChange, name, value, isInputValid}) => {
             <input 
                 className={`${InputCSS.input} ${isInputValid === false && value.length > 0 && InputCSS.inputInvalid}`}
                 id='inputField' 
-                type='text' 
+                type={isPassword ? 'password' : 'text'} 
                 onChange={handleChange} 
                 name={name} 
                 value={value}

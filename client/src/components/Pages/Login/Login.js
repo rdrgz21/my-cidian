@@ -65,7 +65,7 @@ const Login = ({setUser}) => {
                 <form className={LoginCSS.form} onSubmit={handleSubmit}>
                     <div className={LoginCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />
-                            <Input placeholder='Password' handleChange={handleChange} name='password' value={input.password} />
+                            <Input placeholder='Password' handleChange={handleChange} name='password' value={input.password} isPassword={true} />
                     </div>
                     <StyledButton>Login</StyledButton>
                 </form>

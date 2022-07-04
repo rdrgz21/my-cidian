@@ -68,8 +68,8 @@ const Register = () => {
                     <div className={RegisterCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />
                             <Input placeholder='Email Address' handleChange={handleChange} name='email' value={input.email} />
-                            <Input placeholder='Password' handleChange={handleChange} name='password' value={input.password} />
-                            <Input placeholder='Confirm Password' handleChange={handleChange} name='confirmPassword' value={input.confirmPassword} />
+                            <Input placeholder='Password' handleChange={handleChange} name='password' value={input.password} isPassword={true} />
+                            <Input placeholder='Confirm Password' handleChange={handleChange} name='confirmPassword' value={input.confirmPassword} isPassword={true} />
                     </div>
                     <StyledButton>Register</StyledButton>
                 </form>
