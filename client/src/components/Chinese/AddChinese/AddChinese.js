@@ -76,7 +76,7 @@ const nextStage = (state) => {
 
 export const AddChinese = ({user}) => {
     const location = useLocation();
-    const editWordState = location.state?.wordToEdit;
+    const editWordState = location.state ? location.state.wordToEdit : null;
 
     const [state, dispatch] = useReducer(reducer, editWordState ? editWordState : initialState);
 

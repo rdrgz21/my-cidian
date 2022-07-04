@@ -1,3 +1,4 @@
+import React from 'react';
 import HomeCSS from './Home.module.css';
 import { showIndivCharReview } from "../../Chinese/AddChinese/Review/ReviewWord";
 
