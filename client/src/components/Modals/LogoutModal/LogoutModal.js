@@ -1,18 +1,20 @@
 import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import StyledButton from '../../General/StyledButton/StyledButton';
 import LogoutModalCSS from './LogoutModal.module.css';
 
-const LogoutModal = ({setUser, setIsLogoutModalOpen}) => {
-    const history = useHistory();
+const LogoutModal = ({setIsLogoutModalOpen}) => {
+    // const navigate = useNavigate();
+    // const [setUser] = useOutletContext();
     const logoutUser = async () => {
         try {
+            console.log('logging out');
             const res = await axios.get('/api/logout');
-            setUser(null);
+            // setUser(null);
             console.log(res.data);
-            history.push('/');
+            // return navigate('/');
         } catch (error) {
             console.error(error);
         }

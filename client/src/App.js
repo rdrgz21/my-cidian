@@ -1,54 +1,60 @@
-import React, {useEffect, useState, useCallback} from "react";
+import React, {useState, useEffect, useCallback} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
-import Register from "./components/Pages/Register/Register";
-import Login from "./components/Pages/Login/Login";
-import Vocab from "./components/Pages/Vocab";
-import Home from './components/Pages/Home/Home';
+// import Register from "./components/Pages/Register/Register";
+// import Login from "./components/Pages/Login/Login";
+// import Vocab from "./components/Pages/Vocab";
+// import Home from './components/Pages/Home/Home';
 
-import AddChinese from "./components/Chinese/AddChinese/AddChinese";
+// import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 
 
 function App() {
   const [user, setUser] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const checkLogin = useCallback(async () => {
     try {
+      console.log('is logged in?')
       const res = await axios.get('/api/logged_in');
+      console.log(res.data, 'res')
       setUser(res.data.username);
-      history.push('/');
     } catch (error) {
       console.error(error)
     }
-  }, [history]);
+  }, [navigate]);
 
   useEffect(() => {
+    console.log('useeffect');
     checkLogin();
   }, [checkLogin]);
 
   return (
-      <Router>
-        <Navbar user={user} setUser={setUser}  />
+      <div style={{border: '2px solid blue', height: '100vh'}}>
+        <Navbar  />
+      {/* <Navbar user={user} setUser={setUser}  />
 
         <div className="appContainer">
 
-          <Switch>
-            <Route exact path="/" render={() => user ? <Vocab user={user} /> : <Home />} />
+          <Routes>
+            <Route path="/" element={user ? <Vocab user={user} /> : <Home />} />
 
-            {!user && <Route exact path="/register" component={Register} />}
-            {!user && <Route exact path="/login" render={() => <Login setUser={setUser} />} />}
+            {!user && <Route path="register" element={<Register />} />}
+            {!user && <Route path="login" element={<Login setUser={setUser} />} />}
 
-            {user && <Route exact path="/addvocab" render={() => <AddChinese user={user} />} />}
+            {user && <Route path="addvocab" element={<AddChinese user={user} />} />}
 
-            {user && <Route exact path="/editvocab" render={() => <AddChinese user={user} />} />}
-          </Switch>
+            {user && <Route path="editvocab" element={<AddChinese user={user} />} />}
+          </Routes>
 
-        </div>
-      </Router>
+        </div> */}
+          
+        <Outlet context={[user, setUser]} />
+      </div>
   );
 }
 

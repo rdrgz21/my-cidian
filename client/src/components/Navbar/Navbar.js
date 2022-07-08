@@ -7,18 +7,18 @@ import LogoutModal from "../Modals/LogoutModal/LogoutModal";
 const Navbar = props => {
 
   // const {studyLang, setStudyLang, user, setUser} = props;
-  const {user, setUser} = props;
+  // const {user, setUser} = props;
 
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  useEffect(() => {
-    !user && setIsLogoutModalOpen(false); 
-  },[user]);
+  // useEffect(() => {
+  //   !user && setIsLogoutModalOpen(false); 
+  // },[user]);
 
   return (
     <nav>
      
-      <NavLink exact to="/" className={NavbarCSS.navLink}>
+      <NavLink to="/" className={NavbarCSS.navLink}>
             <h3>my词典</h3>
       </NavLink>
 
@@ -27,33 +27,33 @@ const Navbar = props => {
       <ul className={NavbarCSS.navLinks}>
 
         {/* Not logged in links */}
-        {!user && 
-          <NavLink exact to="/register" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+        {
+          <NavLink to="/register" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
             <li>Register</li>
           </NavLink>
         }
-        {!user && 
-          <NavLink exact to="/login" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+        {
+          <NavLink to="/login" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
             <li>Login</li>
           </NavLink>
         }
 
         {/* Logged in links */}
-        {user && 
-          <NavLink exact to="/" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+        {
+          <NavLink to="/vocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
             <li>Vocab</li>
           </NavLink>
         }
-        {user && 
-          <NavLink exact to="/addvocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+        {
+          <NavLink to="addvocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
             <li>Add Vocab</li>
           </NavLink>
         }
-         {user && 
+         {
           <button className={NavbarCSS.button} onClick={() => setIsLogoutModalOpen(true)} >Logout</button>
         }
       </ul>
-      {user && isLogoutModalOpen && <LogoutModal setIsLogoutModalOpen={setIsLogoutModalOpen} setUser={setUser} />}
+      {isLogoutModalOpen && <LogoutModal setIsLogoutModalOpen={setIsLogoutModalOpen} />}
     </nav>
   );
 }

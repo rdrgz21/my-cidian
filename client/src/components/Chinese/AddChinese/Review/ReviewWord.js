@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import ReviewWordCSS from './ReviewWord.module.css';
 import IndivCharReview from '../IndivCharReview/IndivCharReview';
 import axios from 'axios';
@@ -10,7 +10,7 @@ export const showIndivCharReview = (charactersArray, pinyinArray, tonesArray, an
 }
 
 const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord = false}) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const {id, characters, readings, pinyin, english, tones, zh} = wordData;
 
@@ -42,7 +42,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
 
     const editWord = async (e) => {
         e.stopPropagation();
-        history.push({
+        navigate({
             pathname: '/editvocab',
             state: {
                 wordToEdit: editWordState
