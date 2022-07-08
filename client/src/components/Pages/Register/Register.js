@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import { Navigate } from 'react-router-dom';
 import RegisterCSS from "./Register.module.css";
 import axios from 'axios';
 import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
     const emptyInput = {
@@ -14,6 +16,7 @@ const Register = () => {
 
     const [input, setInput] = useState(emptyInput);
     const [message, setMessage] = useState('');
+    const {user} = useAuth();
 
     const handleChange = (event) => {
         setMessage('');
@@ -62,6 +65,7 @@ const Register = () => {
     return (
         <div>
             <div className={RegisterCSS.container}>
+                {user && <Navigate to='/vocab' replace={true} />}
                 <form className={RegisterCSS.form} onSubmit={handleSubmit}>
                     <div className={RegisterCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />

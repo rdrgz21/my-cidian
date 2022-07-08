@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Navigate } from 'react-router-dom';
 import LoginCSS from "./Login.module.css";
 import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
@@ -11,7 +12,7 @@ const Login = () => {
     };
 
     const [input, setInput] = useState(emptyInput);
-    const {message, setMessage, onLogin} = useAuth();
+    const {user, message, setMessage, onLogin} = useAuth();
 
     useEffect(() => {
         setMessage('');
@@ -45,6 +46,7 @@ const Login = () => {
     return (
         <div>
             <div className={LoginCSS.container}>
+                {user && <Navigate to='/vocab' replace={true} />}
                 <form className={LoginCSS.form} onSubmit={handleSubmit}>
                     <div className={LoginCSS.inputContainer}>
                             <Input placeholder='Username' handleChange={handleChange} name='username' value={input.username} />
