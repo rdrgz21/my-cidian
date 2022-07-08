@@ -7,6 +7,7 @@ import AddTones from './AddTones/AddTones';
 import Review from './Review/Review';
 import StageBar from './StageBar/StageBar';
 import { useLocation } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 export const AddChineseContext = createContext();
 
@@ -74,7 +75,8 @@ const nextStage = (state) => {
     }
 };
 
-export const AddChinese = ({user}) => {
+export const AddChinese = () => {
+    const { user } = useAuth();
     const location = useLocation();
     const editWordState = location.state ? location.state.wordToEdit : null;
 
@@ -141,12 +143,6 @@ export const AddChinese = ({user}) => {
     return (
         <AddChineseContext.Provider value={{state: state, dispatch: dispatch}}>
             <div className={AddChineseCSS.container}>
-                {/* {stage > 1 &&
-                    (<div className={AddChineseCSS.buttonContainer}>
-                        <button onClick={() => dispatch({type: CHINESE_ACTIONS.PREV_STAGE})}>Back</button>
-                        <button onClick={() => dispatch({type: CHINESE_ACTIONS.NEXT_STAGE})}>Next</button>
-                    </div>)
-                } */}
                 <StageBar />
                 {generateComponentByStage(stage)}
             </div>

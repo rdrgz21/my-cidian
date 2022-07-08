@@ -2,12 +2,13 @@ import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Cihui from '../Chinese/Cihui';
 import VocabCSS from "./Vocab.module.css";
+import useAuth from '../../hooks/useAuth';
 
 export const Vocab = () => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
     const [isLoading, setLoading] = useState(false);
 
-    const [user, setUser] = useState(null);
+    const {user} = useAuth();
 
     const getVocab = useCallback(async () => {
         setLoading(true);

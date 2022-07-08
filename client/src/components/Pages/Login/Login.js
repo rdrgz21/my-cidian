@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import LoginCSS from "./Login.module.css";
-import axios from 'axios';
 import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
-import { useNavigate } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
-
-
 
     const emptyInput = {
         username: '',
@@ -16,9 +13,11 @@ const Login = () => {
 
     const [input, setInput] = useState(emptyInput);
 
-    const [message, setMessage] = useState('');
+    const {message, setMessage, onLogin} = useAuth();
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        setMessage('');
+    }, []);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -35,25 +34,9 @@ const Login = () => {
         const userDetails = {
             username: input.username,
             password: input.password
-        }
-
-        try {
-            const res = await axios.post('/api/login', userDetails, {
-                header: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            console.log(res.data);
-            setMessage(res.data.message);
-            setInput(emptyInput);
-            if (res.data.username) {
-            //   setUser(res.data.username);
-              return navigate('/vocab');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
+        };
+        onLogin(userDetails);
+        setInput(emptyInput);
     };
 
     const handleSubmit = async (event) => {
