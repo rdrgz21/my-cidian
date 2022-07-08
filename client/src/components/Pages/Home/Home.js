@@ -21,7 +21,7 @@ const pinyin = {
 const Home = () => {
   return (
     <div className={HomeCSS.container}>
-      <p>
+      <span className={HomeCSS.textBlock}>
         <span className={HomeCSS.hanzi}>
             {showIndivCharReview(nihao.characters, nihao.pinyin, nihao.tones, false)}
         </span>
@@ -32,10 +32,21 @@ const Home = () => {
         <span className={HomeCSS.text}>(dictionary),</span><span className={HomeCSS.text}>a personalised Chinese dictionary&nbsp;</span>
         <span className={HomeCSS.text}>where you can save&nbsp;</span><span className={HomeCSS.text}>newly learnt Chinese words&nbsp;</span>
         <span className={HomeCSS.text}>along with their&nbsp;</span>
-        <span className={`${HomeCSS.hanzi} ${HomeCSS.text}`} style={{paddingBottom: '1em'}}>
+        <span className={HomeCSS.hanzi}>
             {showIndivCharReview(pinyin.characters, pinyin.pinyin, pinyin.tones, false)}
         </span> 
-        <span className={HomeCSS.text}>(pinyin).</span></p>
+        <span className={HomeCSS.text}>(pinyin).</span></span>
+
+        
+            {/* {showIndivCharReview(nihao.characters, nihao.pinyin, nihao.tones, false)}
+            <span className={HomeCSS.text}>(hello) and welcome to my</span>
+            {showIndivCharReview(cidian.characters, cidian.pinyin, cidian.tones, false)}
+           <span className={HomeCSS.text}>(dictionary), a personalised Chinese dictionary
+            where you can save newly learnt Chinese words along with their</span>{showIndivCharReview(pinyin.characters, pinyin.pinyin, pinyin.tones, false)}
+            <span className={HomeCSS.text}>(pinyin).</span>
+            </span>  */}
+        
+
     </div>);
 }
 

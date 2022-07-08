@@ -19,20 +19,20 @@ const Navbar = () => {
         {user ? 
           <>
             {/* Logged in links */}
-            <NavLink to="/vocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+            <NavLink to="/vocab" className={({ isActive }) => `${NavbarCSS.navLink} ${isActive && NavbarCSS.navLinkActive}`}>
               <li>Vocab</li>
             </NavLink>
-            <NavLink to="addvocab" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+            <NavLink to="addvocab" className={({ isActive }) => `${NavbarCSS.navLink} ${isActive && NavbarCSS.navLinkActive}`}>
               <li>Add Vocab</li>
             </NavLink>
             <button className={NavbarCSS.button} onClick={() => setIsLogoutModalOpen(true)} >Logout</button>
           </>
         : <>
             {/* Not logged in links */}
-            <NavLink to="/register" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+            <NavLink to="/register" className={({ isActive }) => `${NavbarCSS.navLink} ${isActive && NavbarCSS.navLinkActive}`}>
               <li>Register</li>
             </NavLink>
-            <NavLink to="/login" className={NavbarCSS.navLink} activeClassName={NavbarCSS.navLinkActive}>
+            <NavLink to="/login" className={({ isActive }) => `${NavbarCSS.navLink} ${isActive && NavbarCSS.navLinkActive}`}>
               <li>Login</li>
             </NavLink>
           </>

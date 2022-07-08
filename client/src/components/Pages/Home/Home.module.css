@@ -16,11 +16,11 @@
     align-items: center;
 }
 .text {
-    padding-top: 1em;
+    /* padding-top: 1em; */
+    line-height: 3em;
 }
-.container p {
-    align-items: center;
+.textBlock {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    line-height: 2em;
 }
