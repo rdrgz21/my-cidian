@@ -1,37 +1,36 @@
 import React, {useState, useEffect, useCallback} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import axios from 'axios';
-import { Outlet } from "react-router-dom";
 import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
-// import Register from "./components/Pages/Register/Register";
-// import Login from "./components/Pages/Login/Login";
-// import Vocab from "./components/Pages/Vocab";
-// import Home from './components/Pages/Home/Home';
+import Register from "./components/Pages/Register/Register";
+import Login from "./components/Pages/Login/Login";
+import Vocab from "./components/Pages/Vocab";
+import Home from './components/Pages/Home/Home';
 
-// import AddChinese from "./components/Chinese/AddChinese/AddChinese";
+import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 
 
 function App() {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  // const [user, setUser] = useState(null);
+  // const navigate = useNavigate();
 
-  const checkLogin = useCallback(async () => {
-    try {
-      console.log('is logged in?')
-      const res = await axios.get('/api/logged_in');
-      console.log(res.data, 'res')
-      setUser(res.data.username);
-    } catch (error) {
-      console.error(error)
-    }
-  }, [navigate]);
+  // const checkLogin = useCallback(async () => {
+  //   try {
+  //     console.log('is logged in?')
+  //     const res = await axios.get('/api/logged_in');
+  //     console.log(res.data, 'res')
+  //     setUser(res.data.username);
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }, [navigate]);
 
-  useEffect(() => {
-    console.log('useeffect');
-    checkLogin();
-  }, [checkLogin]);
+  // useEffect(() => {
+  //   console.log('useeffect');
+  //   checkLogin();
+  // }, [checkLogin]);
 
   return (
       <div style={{border: '2px solid blue', height: '100vh'}}>
@@ -52,8 +51,13 @@ function App() {
           </Routes>
 
         </div> */}
-          
-        <Outlet context={[user, setUser]} />
+         <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="addvocab" element={<AddChinese />} />
+            <Route path="vocab" element={<Vocab />} />
+        </Routes>
       </div>
   );
 }

@@ -3,11 +3,11 @@ import LoginCSS from "./Login.module.css";
 import axios from 'axios';
 import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [setUser] = useOutletContext();
+
 
     const emptyInput = {
         username: '',
@@ -47,7 +47,7 @@ const Login = () => {
             setMessage(res.data.message);
             setInput(emptyInput);
             if (res.data.username) {
-              setUser(res.data.username);
+            //   setUser(res.data.username);
               return navigate('/vocab');
             }
         } catch (error) {

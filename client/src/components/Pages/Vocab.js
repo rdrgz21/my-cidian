@@ -2,13 +2,12 @@ import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
 import Cihui from '../Chinese/Cihui';
 import VocabCSS from "./Vocab.module.css";
-import { useOutletContext } from 'react-router-dom';
 
 export const Vocab = () => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
     const [isLoading, setLoading] = useState(false);
 
-    const [user] = useOutletContext();
+    const [user, setUser] = useState(null);
 
     const getVocab = useCallback(async () => {
         setLoading(true);
@@ -25,7 +24,7 @@ export const Vocab = () => {
             setLoading(false);
             return;
         }
-        return 'User not logged in';
+        console.log('User not logged in');
     },[user]);
 
     useEffect(() => {
