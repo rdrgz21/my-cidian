@@ -10,6 +10,7 @@ import Home from './components/Pages/Home/Home';
 
 import AddChinese from "./components/Chinese/AddChinese/AddChinese";
 import AuthProvider from "./components/General/AuthProvider/AuthProvider";
+import ProtectedRoute from "./components/General/ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -21,9 +22,9 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
-                <Route path="addvocab" element={<AddChinese />} />
-                <Route path="vocab" element={<Vocab />} />
-                <Route path="/editvocab" element={<AddChinese />} />
+                <Route path="addvocab" element={<ProtectedRoute><AddChinese /></ProtectedRoute>} />
+                <Route path="vocab" element={<ProtectedRoute><Vocab /></ProtectedRoute>} />
+                <Route path="editvocab" element={<ProtectedRoute><AddChinese /></ProtectedRoute>} />
             </Routes>
           </div>
         </AuthProvider>

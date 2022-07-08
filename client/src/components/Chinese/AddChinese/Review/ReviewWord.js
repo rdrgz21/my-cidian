@@ -42,7 +42,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
 
     const editWord = async (e) => {
         e.stopPropagation();
-        navigate('/editvocab',
+        navigate('editvocab',
             {state: {
                 wordToEdit: editWordState
             }}

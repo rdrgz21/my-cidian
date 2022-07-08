@@ -5,7 +5,6 @@ import Input from '../../General/Input/Input';
 import StyledButton from '../../General/StyledButton/StyledButton';
 
 const Register = () => {
-
     const emptyInput = {
         username: '',
         email: '',
@@ -14,7 +13,6 @@ const Register = () => {
     };
 
     const [input, setInput] = useState(emptyInput);
-
     const [message, setMessage] = useState('');
 
     const handleChange = (event) => {

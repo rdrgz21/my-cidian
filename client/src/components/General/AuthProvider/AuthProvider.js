@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            console.log('is logged in?')
+            console.log('Checking if user is logged in');
             const res = await axios.get('/api/logged_in');
             console.log(res.data, 'res')
             setUser(res.data.username);
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         setMessage('');
         try {
-            console.log('logging out');
+            console.log('Logging out');
             const res = await axios.get('/api/logout');
             setUser(null);
             console.log(res.data);

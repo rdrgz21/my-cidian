@@ -54,13 +54,7 @@ export const Vocab = () => {
         } else return null;
     }
 
-    
-    // if (isLoading) {
-    //     return 
-    // }
-
     return (
-        // <div className={isLangJapanese ? VocabCSS.containerJa : VocabCSS.containerZh}>
         <div className={VocabCSS.containerZh}>
             {/* Subrendering */}
             {allVocab()}

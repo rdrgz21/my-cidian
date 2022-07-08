@@ -5,14 +5,12 @@ import StyledButton from '../../General/StyledButton/StyledButton';
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
-
     const emptyInput = {
         username: '',
         password: ''
     };
 
     const [input, setInput] = useState(emptyInput);
-
     const {message, setMessage, onLogin} = useAuth();
 
     useEffect(() => {
