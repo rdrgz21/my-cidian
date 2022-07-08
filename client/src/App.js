@@ -23,6 +23,7 @@ function App() {
                 <Route path="register" element={<Register />} />
                 <Route path="addvocab" element={<AddChinese />} />
                 <Route path="vocab" element={<Vocab />} />
+                <Route path="/editvocab" element={<AddChinese />} />
             </Routes>
           </div>
         </AuthProvider>

@@ -42,12 +42,11 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
 
     const editWord = async (e) => {
         e.stopPropagation();
-        navigate({
-            pathname: '/editvocab',
-            state: {
+        navigate('/editvocab',
+            {state: {
                 wordToEdit: editWordState
-            }
-        })
+            }}
+        );
     };
 
     const charWidthStyles = {fontSize: `min(${50/characters.length}vw, 10vh`};

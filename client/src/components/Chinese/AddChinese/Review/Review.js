@@ -37,7 +37,7 @@ export const Review = props => {
             <div className={ReviewCSS.buttonContainer}>
                 <StyledButton onClick={resetAnimation}>Replay</StyledButton>
                 {(message === "New vocab added" || message === "Sorry, you've already saved this word!") && <StyledButton onClick={handleSubmit}>Add New Vocab</StyledButton>}
-                {message === "Vocab updated" && <Link to='/' style={{textDecoration: 'none'}}><StyledButton>Return to Vocab</StyledButton></Link>}
+                {message === "Vocab updated" && <Link to='/vocab' style={{textDecoration: 'none'}}><StyledButton>Return to Vocab</StyledButton></Link>}
                 {message === " " && <StyledButton onClick={handleSubmit}>Save</StyledButton>}
             
             </div>
