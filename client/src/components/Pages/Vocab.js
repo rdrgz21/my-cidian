@@ -25,7 +25,6 @@ export const Vocab = () => {
             setLoading(false);
             return;
         }
-        console.log('User not logged in');
     },[user]);
 
     useEffect(() => {

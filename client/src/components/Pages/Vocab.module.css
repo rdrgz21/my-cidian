@@ -1,8 +1,3 @@
-.containerJa {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
 .containerZh {
     display: flex;
     align-items: center;

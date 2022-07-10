@@ -1,5 +1,5 @@
 .grid {
-    height: calc(100% - 5vh);
+    flex: 1;
     width: 100%;
     display: grid;
     grid-auto-rows: 1fr 2fr 1fr;

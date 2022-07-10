@@ -1,9 +1,7 @@
 .container {
     border-bottom: 2px solid white;
-    /* background-color: 75A87E; */
     width: 100%;
-    margin: 5px 0;
-    padding-bottom: 5px;
+    padding: 7px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
