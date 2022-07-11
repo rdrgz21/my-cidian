@@ -14,6 +14,12 @@
 .hanzi {
     display: inline-flex;
     align-items: center;
+    padding-bottom: 0.5em;
+}
+.hanzi .text {
+    padding-top: 0.5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
 }
 .text {
     /* padding-top: 1em; */
