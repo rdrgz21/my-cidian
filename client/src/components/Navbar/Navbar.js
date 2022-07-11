@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav>
       <NavLink to="/" className={NavbarCSS.navLink}>
-            <h3>my词典</h3>
+            <h3><span>my</span>词典</h3>
       </NavLink>
       
       <ul className={NavbarCSS.navLinks}>
