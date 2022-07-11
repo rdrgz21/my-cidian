@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 
 export const Vocab = () => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(true);
 
     const {user} = useAuth();
 
