@@ -57,7 +57,7 @@ export const Vocab = () => {
         <div className={VocabCSS.containerZh}>
             {/* Subrendering */}
             {allVocab()}
-            {isLoading && !databaseVocab && <div>Loading...</div>}
+            {isLoading && !databaseVocab.length && <div>Loading...</div>}
             {!databaseVocab.length && !isLoading && <div>You have no vocabulary saved yet! Try adding a word.</div>}
         </div>
     )
