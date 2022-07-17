@@ -36,17 +36,6 @@ const Home = () => {
             {showIndivCharReview(pinyin.characters, pinyin.pinyin, pinyin.tones, false)}
         </span> 
         <span className={HomeCSS.text}>(pinyin).</span></span>
-
-        
-            {/* {showIndivCharReview(nihao.characters, nihao.pinyin, nihao.tones, false)}
-            <span className={HomeCSS.text}>(hello) and welcome to my</span>
-            {showIndivCharReview(cidian.characters, cidian.pinyin, cidian.tones, false)}
-           <span className={HomeCSS.text}>(dictionary), a personalised Chinese dictionary
-            where you can save newly learnt Chinese words along with their</span>{showIndivCharReview(pinyin.characters, pinyin.pinyin, pinyin.tones, false)}
-            <span className={HomeCSS.text}>(pinyin).</span>
-            </span>  */}
-        
-
     </div>);
 }
 
