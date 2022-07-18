@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import axios from 'axios';
-import Cihui from '../Chinese/Cihui';
+import Cihui from '../../Chinese/Cihui/Cihui';
 import VocabCSS from "./Vocab.module.css";
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 export const Vocab = () => {
     const [databaseVocab, setDatabaseVocab] = useState([]);
@@ -16,7 +16,6 @@ export const Vocab = () => {
         if(user) {
             try {
                 const res = await axios.get(`/api/vocab/zh/${user}`);
-                console.log(res.data.foundWords);
                 setDatabaseVocab(res.data.foundWords.reverse());
             } catch (error) {
                 // TODO: Show error to user
