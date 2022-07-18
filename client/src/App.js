@@ -5,7 +5,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Pages/Register/Register";
 import Login from "./components/Pages/Login/Login";
-import Vocab from "./components/Pages/Vocab";
+import Vocab from "./components/Pages/Vocab/Vocab";
 import Home from './components/Pages/Home/Home';
 
 import AddChinese from "./components/Chinese/AddChinese/AddChinese";
