@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CihuiCSS from './Cihui.module.css';
-import ReviewWord from './AddChinese/Review/ReviewWord';
+import ReviewWord from '../AddChinese/Review/ReviewWord';
 
 const Cihui = props => {
 

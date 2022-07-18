@@ -3,6 +3,7 @@ import {server} from './mocks/server';
 import React from 'react';
 import { render } from '@testing-library/react';
 import { AuthContext } from './components/General/AuthProvider/AuthProvider';
+import { BrowserRouter } from 'react-router-dom';
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
@@ -10,19 +11,21 @@ afterAll(() => server.close())
 
 
 const AllTheProviders = ({ children, customContext }) => (
-    <AuthContext.Provider
-        value={{
-            user: '',
-            setUser: () => null,
-            message: '',
-            setMessage: () => null,
-            onLogin: () => null,
-            onLogout: () => null,
-            ...customContext
-        }}
-    >
-       {children}
-    </AuthContext.Provider>
+    <BrowserRouter>
+        <AuthContext.Provider
+            value={{
+                user: '',
+                setUser: () => null,
+                message: '',
+                setMessage: () => null,
+                onLogin: () => null,
+                onLogout: () => null,
+                ...customContext
+            }}
+        >
+        {children}
+        </AuthContext.Provider>
+    </BrowserRouter>
 );
 
 const customRender = (ui, customContext, options) =>
