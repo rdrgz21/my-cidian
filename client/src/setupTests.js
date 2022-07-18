@@ -4,6 +4,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { AuthContext } from './components/General/AuthProvider/AuthProvider';
 import { BrowserRouter } from 'react-router-dom';
+import { AddChineseContext } from './components/Chinese/AddChinese/AddChinese';
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
@@ -23,7 +24,26 @@ const AllTheProviders = ({ children, customContext }) => (
                 ...customContext
             }}
         >
-        {children}
+            {/* value - how mock state and dispatch? */}
+            <AddChineseContext.Provider
+                value={{
+                    state: {
+                        chinese: '',
+                        english: '',
+                        characters: [],
+                        readings: [],
+                        tones: [],
+                        pinyin: [],
+                        stage: 1,
+                        stageReached: 1,
+                        isEditing: false,
+                    },
+                    dispatch: jest.fn(),
+                    ...customContext
+                }}
+            >
+                {children}
+            </AddChineseContext.Provider>
         </AuthContext.Provider>
     </BrowserRouter>
 );
