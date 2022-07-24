@@ -70,7 +70,6 @@ export const applyTone = (string, tone) => {
     const final = getFinal(string);
 
     if (!final) {
-        console.log('No valid final found');
         return null;
     }
 

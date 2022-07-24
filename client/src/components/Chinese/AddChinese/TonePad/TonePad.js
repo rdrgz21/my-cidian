@@ -13,12 +13,9 @@ export const TonePad = props => {
     }, [savedTone]);
 
     const handleClick = event => {
-        
         setTimeout(()=> {
             parseInt(event.target.value) === clickedTone ? setClickedTone(0) : setClickedTone(parseInt(event.target.value));
         }, 500);
-        
-        // console.log(savedTone === clickedTone);
         handleToneClick(event);
     }
 

@@ -15,12 +15,9 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
     const {id, characters, readings, pinyin, english, tones, zh} = wordData;
 
     const deleteWord = async (e) => {
-        console.log('Deleting word');
         e.stopPropagation();
         try {
             const res = await axios.delete(`/api/vocab/zh/${id}`);
-            console.log(res);
-            console.log(res.data.message);
         } catch (error) {
             console.error(error);
         }

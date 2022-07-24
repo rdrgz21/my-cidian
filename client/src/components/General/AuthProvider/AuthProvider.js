@@ -15,13 +15,10 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            console.log('Checking if user is logged in');
             const res = await axios.get('/api/logged_in');
-            console.log(res.data, 'res')
             setUser(res.data.username);
         } catch (error) {
             console.error(error);
-            console.log('Failed to log in');
         }
     };
 
@@ -32,7 +29,6 @@ const AuthProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log(res.data);
             setMessage(res.data.message);
             if (res.data.username) {
               setUser(res.data.username);
@@ -46,14 +42,11 @@ const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         setMessage('');
         try {
-            console.log('Logging out');
             const res = await axios.get('/api/logout');
             setUser(null);
-            console.log(res.data);
             return navigate('/');
         } catch (error) {
             console.error(error);
-            console.log('Failed to log out');
         }
     };
   

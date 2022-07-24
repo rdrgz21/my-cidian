@@ -68,7 +68,6 @@ export const AddZhEn = () => {
             dispatch({type: CHINESE_ACTIONS.SET_TONES, payload: newTonesArray});
 
             if (splitCharacters.length > characters.length) {
-                console.log('added extra characters');
                 dispatch({type: CHINESE_ACTIONS.TOGGLE_IS_EDITING});
             }
 
