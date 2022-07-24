@@ -32,6 +32,8 @@ describe('Register page', () => {
         // await waitFor(() =>  expect(screen.getByText(/User successfully registered/i)).toBeInTheDocument());
         // or
         expect(await screen.findByText(/User successfully registered/i)).toBeInTheDocument();
+
+        // expect(await screen.findByText(/User successfully registered/i)).toBeInTheDocument();
         // findByText returns a promise so must be resolved first
     });
 
