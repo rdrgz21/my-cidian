@@ -17,7 +17,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
     const deleteWord = async (e) => {
         e.stopPropagation();
         try {
-            await axios.delete(`/api/vocab/zh/${id}`);
+            await axios.delete(`https://my-cidian.herokuapp.com/api/vocab/zh/${id}`);
         } catch (error) {
             console.error(error);
         }

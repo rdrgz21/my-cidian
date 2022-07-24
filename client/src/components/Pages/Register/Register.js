@@ -38,7 +38,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post('/api/register', userDetails, {
+            const res = await axios.post('https://my-cidian.herokuapp.com/api/register', userDetails, {
                 header: {
                     'Content-Type': 'application/json'
                 }

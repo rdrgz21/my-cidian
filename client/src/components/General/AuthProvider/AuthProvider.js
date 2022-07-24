@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            const res = await axios.get('/api/logged_in');
+            const res = await axios.get('https://my-cidian.herokuapp.com/api/logged_in');
             setUser(res.data.username);
         } catch (error) {
             console.error(error);
@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
 
     const handleLogin = async (userDetails) => {
         try {
-            const res = await axios.post('/api/login', userDetails, {
+            const res = await axios.post('https://my-cidian.herokuapp.com/api/login', userDetails, {
                 header: {
                     'Content-Type': 'application/json'
                 }
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         setMessage('');
         try {
-            await axios.get('/api/logout');
+            await axios.get('https://my-cidian.herokuapp.com/api/logout');
             setUser(null);
             return navigate('/');
         } catch (error) {

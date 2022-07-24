@@ -15,7 +15,7 @@ export const Vocab = () => {
         // TODO: create a loading spinner and error message 
         if(user) {
             try {
-                const res = await axios.get(`/api/vocab/zh/${user}`);
+                const res = await axios.get(`https://my-cidian.herokuapp.com/api/vocab/zh/${user}`);
                 setDatabaseVocab(res.data.foundWords.reverse());
             } catch (error) {
                 // TODO: Show error to user

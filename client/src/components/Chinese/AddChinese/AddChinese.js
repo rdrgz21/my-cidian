@@ -110,7 +110,7 @@ export const AddChinese = () => {
         }
 
         if (isEditing) {
-            const response = await axios.patch(`/api/vocab/zh/${id}`, newVocab, {
+            const response = await axios.patch(`https://my-cidian.herokuapp.com/api/vocab/zh/${id}`, newVocab, {
                 header: {
                     'Content-Type': 'application/json'
                 }
@@ -118,7 +118,7 @@ export const AddChinese = () => {
     
             setMessage(response.data.message);
         } else {
-            const response = await axios.post('/api/vocab/zh', newVocab, {
+            const response = await axios.post('https://my-cidian.herokuapp.com/api/vocab/zh', newVocab, {
                 header: {
                     'Content-Type': 'application/json'
                 }
