@@ -66,6 +66,12 @@ export const AddZhEn = () => {
             dispatch({type: CHINESE_ACTIONS.SET_READINGS, payload: newReadingsArray});
             dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: newPinyinArray});
             dispatch({type: CHINESE_ACTIONS.SET_TONES, payload: newTonesArray});
+
+            if (splitCharacters.length > characters.length) {
+                console.log('added extra characters');
+                dispatch({type: CHINESE_ACTIONS.TOGGLE_IS_EDITING});
+            }
+
         } else {
             const emptyStringArray = new Array(splitCharacters.length).fill('');
             const emptyNumberArray = new Array(splitCharacters.length).fill(0);

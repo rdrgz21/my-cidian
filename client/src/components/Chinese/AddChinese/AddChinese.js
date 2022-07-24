@@ -34,7 +34,8 @@ export const CHINESE_ACTIONS = {
     PREV_STAGE: 'PREV_STAGE',
     SET_STAGE: 'SET_STAGE',
     RESET: 'RESET',
-    SET_TONES_AND_PINYIN: 'SET_TONES_AND_PINYIN'
+    SET_TONES_AND_PINYIN: 'SET_TONES_AND_PINYIN',
+    TOGGLE_IS_EDITING: 'TOGGLE_IS_EDITING'
 }
 
 const reducer = (state, action) => {
@@ -61,6 +62,8 @@ const reducer = (state, action) => {
             return {...initialState};
         case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
             return {...state, tones: action.payload.tones, pinyin: action.payload.pinyin};
+        case CHINESE_ACTIONS.TOGGLE_IS_EDITING:
+            return {...state, isEditing: !state.isEditing, stageReached: 2}
         default:
             return state;    
 
