@@ -1,9 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const JapaneseWord = require('./models/japaneseWord');
-const JapaneseSentence = require('./models/japaneseSentence');
-const JapaneseCorrection = require('./models/japaneseCorrection');
 const ChineseWord = require('./models/chineseWord');
 const bcrypt = require('bcrypt');
 const User = require('./models/user');
@@ -151,17 +148,6 @@ app.get('/api/logged_in', auth.isLoggedIn, (req,res) => {
 
 // VOCAB - Add & retrieve
 
-// app.get('/api/vocab/ja', async (req, res) => {
-//     try {
-//         const foundWords = await JapaneseWord.find();
-//         res.json({
-//             foundWords
-//         })
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
-
 app.get('/api/vocab/zh/:id', async (req, res) => {
     const username = req.params.id;
     try {
@@ -173,45 +159,6 @@ app.get('/api/vocab/zh/:id', async (req, res) => {
         console.log(error);
     }
 });
-
-// ADD JAPANESE WORD
-
-// app.post('/api/vocab/ja', async (req, res) => {
-//     console.log(req.body);
-
-//     const lang = req.params.lang;
-//     console.log({lang});
-
-//     const japanese = req.body.japanese;
-//     const reading = req.body.reading;
-//     const english = req.body.english;
-
-//     try {
-//         const existingTango = await JapaneseWord.find({ japanese });
-
-//         if (existingTango.length > 0) {
-//             res.json({
-//                 message: 'Sorry, that word already exists in the database'
-//             })
-//         } else {
-//             await JapaneseWord.create(
-//                 {
-//                     japanese,
-//                     reading,
-//                     english
-//                 }
-//             );
-    
-//             res.json({
-//                 message: "New vocab added"
-//             })
-//         }
-//     } catch (error) {
-//         res.json({
-//             message: "This vocab was not added"
-//         })
-//     }   
-// });
 
 // ADD CHINESE WORD
 
@@ -283,171 +230,6 @@ app.patch('/api/vocab/zh/:id', async(req, res) => {
         res.json({
             message:'Vocab updated'
         })
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-// VOCAB - Delete & edit
-
-app.delete('/api/deletevocab/:id', async (req, res) => {
-    const id = req.params.id;
-    console.log(req);
-    try {
-        await JapaneseWord.findByIdAndDelete({_id: id});
-        console.log('Attempting to delete vocab');
-        res.json({
-            message:'Vocab deleted'
-        })
-    } catch (error) {
-        console.log(error);
-    } 
-});
-
-app.post('/api/updatevocab/:id', async(req, res) => {
-    const id = req.params.id;
-    try {
-        await JapaneseWord.findByIdAndUpdate(id, req.body);
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-// SENTENCES - Add & retrieve
-
-app.get('/api/sentences', async (req, res) => {
-    try {
-        const foundSentences = await JapaneseSentence.find();
-        res.json({
-            foundSentences
-        })
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-app.post('/api/sentences', async (req, res) => {
-    console.log(req.body);
-
-    const japanese = req.body.japanese;
-    const english = req.body.english;
-
-    try {
-        const existingSentences = await JapaneseSentence.find({ japanese });
-
-        if (existingSentences.length > 0) {
-            res.json({
-                message: 'Sorry, that sentence already exists in the database'
-            })
-        } else {
-            await JapaneseSentence.create(
-                {
-                    japanese,
-                    english
-                }
-            );
-    
-            res.json({
-                message: "New sentence added"
-            })
-        }
-    } catch (error) {
-        res.json({
-            message: "This sentence was not added"
-        })
-    }   
-});
-
-// SENTENCES - Delete & edit
-
-app.delete('/api/deletesentence/:id', async (req, res) => {
-    const id = req.params.id;
-    console.log(req);
-    try {
-        await JapaneseSentence.findByIdAndDelete({_id: id});
-        console.log('Attempting to delete sentence');
-        res.json({
-            message:'Sentence deleted'
-        })
-    } catch (error) {
-        console.log(error);
-    } 
-});
-
-app.post('/api/updatesentence/:id', async(req, res) => {
-    const id = req.params.id;
-    try {
-        await JapaneseSentence.findByIdAndUpdate(id, req.body);
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-// CORRECTIONS - Add & retrieve
-
-app.get('/api/corrections/:id', async (req, res) => {
-    const sentenceID = req.params.id;
-    try {
-        const foundCorrections = await JapaneseCorrection.find({sentenceID});
-        res.json({
-            foundCorrections
-        })
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-app.post('/api/corrections', async (req, res) => {
-    console.log(req.body);
-
-    const sentenceID = req.body.sentenceID;
-    const correction = req.body.correction;
-
-    try {
-        const existingCorrections = await JapaneseSentence.find({ sentenceID, correction });
-
-        if (existingCorrections.length > 0) {
-            res.json({
-                message: 'Sorry, an identical correction for that sentence already exists in the database'
-            })
-        } else {
-            await JapaneseCorrection.create(
-                {
-                    sentenceID,
-                    correction
-                }
-            );
-            res.json({
-                message: "New correction added"
-            })
-        }
-    } catch (error) {
-        res.json({
-            message: "This correction was not added"
-        })
-    }   
-});
-
-// CORRECTIONS - Delete & edit
-
-app.delete('/api/deletecorrection/:id', async (req, res) => {
-    const id = req.params.id;
-    console.log(req);
-    try {
-        await JapaneseCorrection.findByIdAndDelete({_id: id});
-        console.log('Attempting to delete sentence');
-        res.json({
-            message:'Sentence deleted'
-        })
-    } catch (error) {
-        console.log(error);
-    } 
-});
-
-app.post('/api/updatesentence/:id', async(req, res) => {
-    const id = req.params.id;
-    try {
-        await JapaneseSentence.findByIdAndUpdate(id, req.body);
     } catch (error) {
         console.log(error);
     }
