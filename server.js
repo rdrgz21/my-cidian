@@ -241,6 +241,6 @@ app.get('/', (req, res) => {
 });
 
 // Specifying port to run on. React runs on 3000 by default, so choose other to avoid conflict.
-app.listen( 4999, () => {
-    console.log('Server is running on port 4999');
+app.listen( process.env.PORT || 5000, () => {
+    console.log('Server is running');
 });
