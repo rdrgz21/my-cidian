@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useCallback } from 'react';
 import { applyTone } from '../../../../helpers/pinyin';
 import { TonePad } from '../TonePad/TonePad';
 import AnimatedPinyin from '../AnimatedPinyin/AnimatedPinyin';
@@ -22,16 +22,16 @@ export const AddSingleTone = props => {
         dispatch({type: CHINESE_ACTIONS.SET_TONES, payload: newArray});
     };
 
-    const constructPinyin = () => {
+    const constructPinyin = useCallback(() => {
         const firstSection = pinyin.slice(0, index);
         const secondSection = pinyin.slice(index + 1, pinyin.length);
         const newArray = firstSection.concat([applyTone(readings[index], tones[index])], secondSection);
         dispatch({type: CHINESE_ACTIONS.SET_PINYIN, payload: newArray});
-    };
+    },[dispatch, index, pinyin, readings, tones]);
 
     useEffect(() =>{
         constructPinyin();
-    }, [tones[index]]);
+    }, [constructPinyin]);
 
     const handleClickNext = event => {
         event.preventDefault();

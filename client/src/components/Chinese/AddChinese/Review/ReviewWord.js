@@ -17,7 +17,7 @@ const ReviewWord = ({animationPlayed, wordData, openCloseReviewWord, isSavedWord
     const deleteWord = async (e) => {
         e.stopPropagation();
         try {
-            const res = await axios.delete(`/api/vocab/zh/${id}`);
+            await axios.delete(`/api/vocab/zh/${id}`);
         } catch (error) {
             console.error(error);
         }

@@ -16,7 +16,7 @@ const Login = () => {
 
     useEffect(() => {
         setMessage('');
-    }, []);
+    }, [setMessage]);
 
     const handleChange = (event) => {
         const {name, value} = event.target;

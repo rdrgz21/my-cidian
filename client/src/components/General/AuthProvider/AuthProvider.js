@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     const handleLogout = async () => {
         setMessage('');
         try {
-            const res = await axios.get('/api/logout');
+            await axios.get('/api/logout');
             setUser(null);
             return navigate('/');
         } catch (error) {
