@@ -3,7 +3,7 @@ module.exports = function(app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'http://localhost:4999',
+            target: 'https://my-cidian.herokuapp.com',
             changeOrigin: true
         })
     )
