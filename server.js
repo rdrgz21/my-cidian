@@ -7,6 +7,7 @@ const User = require('./models/user');
 const jwt = require('jsonwebtoken');
 const cookieparser = require('cookie-parser');
 const auth = require('./middleware/auth');
+const cors = require('cors');
 
 dotenv.config({ path: './.env'});
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ extended: false }));
 app.use(cookieparser());
+app.use(cors());
 
 // Connect DB 
 
@@ -241,6 +243,6 @@ app.get('/', (req, res) => {
 });
 
 // Specifying port to run on. React runs on 3000 by default, so choose other to avoid conflict.
-app.listen( process.env.PORT || 5000, () => {
+app.listen( process.env.PORT || 4999, () => {
     console.log('Server is running');
 });
