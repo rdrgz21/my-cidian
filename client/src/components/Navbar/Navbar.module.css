@@ -23,6 +23,7 @@ nav h3 span {
   display: flex;
   align-items: center;
   list-style: none;
+  padding: 0;
 }
 .navLink {
     color: black;
