@@ -38,6 +38,15 @@ const Login = () => {
         setInput(emptyInput);
     };
 
+    const guestLogin = async () => {
+        const guestDetails = {
+            username: 'guest_user',
+            password: 'guest_password'
+        }
+        onLogin(guestDetails);
+        setInput(emptyInput);
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         loginUser();
@@ -54,6 +63,7 @@ const Login = () => {
                     </div>
                     <StyledButton>Login</StyledButton>
                 </form>
+                <StyledButton onClick={guestLogin}>Login as Guest 💁</StyledButton>
                 <p className={LoginCSS.message}>{message}</p>
             </div>
         </div>

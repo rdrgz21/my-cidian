@@ -4,3 +4,7 @@
     flex-direction: column;
     width: 100%;
 }
+.noVocab {
+    padding: 1em 0;
+    text-decoration: none;
+}

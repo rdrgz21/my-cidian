@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Cihui from '../../Chinese/Cihui/Cihui';
 import VocabCSS from "./Vocab.module.css";
@@ -56,8 +57,8 @@ export const Vocab = () => {
         <div className={VocabCSS.containerZh}>
             {/* Subrendering */}
             {allVocab()}
-            {isLoading && !databaseVocab.length && <div>Loading...</div>}
-            {!databaseVocab.length && !isLoading && <div>You have no vocabulary saved yet! Try adding a word.</div>}
+            {isLoading && !databaseVocab.length && <div className={VocabCSS.noVocab}>Loading...</div>}
+            {!databaseVocab.length && !isLoading && <div className={VocabCSS.noVocab}>You have no vocabulary saved yet! <Link to='/addvocab'>Try adding a word.</Link></div>}
         </div>
     )
 };
