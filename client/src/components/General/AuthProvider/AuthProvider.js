@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            const res = await axios.get('https://my-cidian.herokuapp.com/api/logged_in');
+            const res = await axios.get('https://my-cidian.herokuapp.com/api/logged_in', {withCredentials: true});
             setUser(res.data.username);
         } catch (error) {
             console.error(error);
