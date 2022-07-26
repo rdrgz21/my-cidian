@@ -16,7 +16,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ extended: false }));
 app.use(cookieparser());
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true, origin: 'https://my-cidian.netlify.app' }));
 
 // Connect DB 
 
