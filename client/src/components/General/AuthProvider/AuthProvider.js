@@ -26,8 +26,9 @@ const AuthProvider = ({ children }) => {
         try {
             const res = await axios.post('https://my-cidian.herokuapp.com/api/login', userDetails, {
                 header: {
-                    'Content-Type': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true
             });
             setMessage(res.data.message);
             if (res.data.username) {
