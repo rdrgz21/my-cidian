@@ -68,7 +68,7 @@ export const AddZhEn = () => {
             dispatch({type: CHINESE_ACTIONS.SET_TONES, payload: newTonesArray});
 
             if (splitCharacters.length > characters.length) {
-                dispatch({type: CHINESE_ACTIONS.SET_STAGE, payload: 2});
+                dispatch({type: CHINESE_ACTIONS.SET_STAGE_REACHED, payload: 2});
             }
 
         } else {

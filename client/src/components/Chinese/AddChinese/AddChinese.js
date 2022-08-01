@@ -57,6 +57,8 @@ const reducer = (state, action) => {
             return {...state, stage: state.stage - 1};
         case CHINESE_ACTIONS.SET_STAGE:
             return {...state, stage: action.payload}
+        case CHINESE_ACTIONS.SET_STAGE_REACHED:
+            return {...state, stageReached: action.payload}
         case CHINESE_ACTIONS.RESET:
             return {...initialState};
         case CHINESE_ACTIONS.SET_TONES_AND_PINYIN:
